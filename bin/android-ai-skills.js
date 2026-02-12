@@ -20,6 +20,16 @@ const ALL_SKILLS = [
   "android-build-infra",
   "android-background-work",
   "android-navigation-best-practices",
+  "play-billing-best-practices",
+  "firebase-best-practices",
+  "android-dependency-injection",
+  "android-networking",
+  "android-local-storage",
+  "android-auth-identity",
+  "android-media",
+  "android-ci-cd",
+  "android-maps-location",
+  "android-ml-ondevice",
 ];
 
 const CROSS_CUTTING_SKILLS = [
@@ -32,6 +42,16 @@ const CROSS_CUTTING_SKILLS = [
   "android-build-infra",
   "android-background-work",
   "android-navigation-best-practices",
+  "play-billing-best-practices",
+  "firebase-best-practices",
+  "android-dependency-injection",
+  "android-networking",
+  "android-local-storage",
+  "android-auth-identity",
+  "android-media",
+  "android-ci-cd",
+  "android-maps-location",
+  "android-ml-ondevice",
 ];
 
 // ── Tool registry for project-level init ──────────────────────────────
@@ -109,6 +129,16 @@ If the project is Android-only:
 - **android-build-infra**
 - **android-background-work**
 - **android-navigation-best-practices**
+- **play-billing-best-practices**
+- **firebase-best-practices**
+- **android-dependency-injection**
+- **android-networking**
+- **android-local-storage**
+- **android-auth-identity**
+- **android-media**
+- **android-ci-cd**
+- **android-maps-location**
+- **android-ml-ondevice**
 
 ## Enterprise Mode auto-detection (optional)
 

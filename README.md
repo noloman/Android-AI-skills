@@ -55,6 +55,16 @@ These AI skills:
 - Standardize **build infrastructure** (version catalogs, convention plugins, modularization)
 - Govern **background work** (WorkManager, foreground services, notifications)
 - Guide **navigation** (type-safe routes, deep links, App Links)
+- Enforce **Play Billing** (subscriptions, server verification, purchase lifecycle)
+- Integrate **Firebase** (Auth, Firestore, Crashlytics, FCM, Remote Config)
+- Standardize **dependency injection** (Hilt scoping, multi-module DI, testing)
+- Govern **networking** (Retrofit, OkHttp, Ktor, caching, error handling)
+- Manage **local storage** (Room, DataStore, offline-first, encryption)
+- Secure **authentication** (Credential Manager, biometrics, token management)
+- Handle **media** (Media3, CameraX, image loading, audio focus)
+- Automate **CI/CD** (GitHub Actions, Fastlane, signing, Play Store deployment)
+- Guide **maps & location** (FusedLocationProvider, geofencing, permissions)
+- Enable **on-device ML** (ML Kit, TFLite, Gemini Nano, model management)
 - Scale from indie to enterprise
 - Adapt automatically (Enterprise Mode auto-detection)
 
@@ -124,6 +134,56 @@ flowchart LR
     C --- U
     D --- U
     E --- U
+
+    V[play-billing-best-practices]
+    C --- V
+    D --- V
+    E --- V
+
+    W[firebase-best-practices]
+    C --- W
+    D --- W
+    E --- W
+
+    X[android-dependency-injection]
+    C --- X
+    D --- X
+    E --- X
+
+    Y[android-networking]
+    C --- Y
+    D --- Y
+    E --- Y
+
+    Z[android-local-storage]
+    C --- Z
+    D --- Z
+    E --- Z
+
+    AA[android-auth-identity]
+    C --- AA
+    D --- AA
+    E --- AA
+
+    AB[android-media]
+    C --- AB
+    D --- AB
+    E --- AB
+
+    AC[android-ci-cd]
+    C --- AC
+    D --- AC
+    E --- AC
+
+    AD[android-maps-location]
+    C --- AD
+    D --- AD
+    E --- AD
+
+    AE[android-ml-ondevice]
+    C --- AE
+    D --- AE
+    E --- AE
 ```
 
 ---
@@ -304,6 +364,146 @@ Cross-cutting skill — type-safe routes, deep links, App Links, navigation patt
 
 ---
 
+### 13. play-billing-best-practices
+
+Cross-cutting skill — in-app purchases, subscriptions, server verification, testing.
+
+**Enforces:**
+- Server-side purchase verification — never trust client
+- Acknowledge all purchases within 3 days
+- Consume consumable purchases after delivery
+- Handle all BillingResponseCode values
+- Test with license testers on real devices
+- Handle pending purchases for slow payment methods
+
+---
+
+### 14. firebase-best-practices
+
+Cross-cutting skill — Auth, Firestore, Crashlytics, Remote Config, FCM, Analytics.
+
+**Enforces:**
+- Firebase BoM for consistent versions
+- Firestore security rules before production
+- No PII in Crashlytics logs
+- Respect user consent before Analytics collection
+- Handle FCM token rotation
+- Rate-limit Remote Config fetches
+
+---
+
+### 15. android-dependency-injection
+
+Cross-cutting skill — Hilt/Dagger setup, scoping, multi-module DI, testing.
+
+**Enforces:**
+- Hilt as default DI framework
+- Correct scoping (@Singleton, @ViewModelScoped)
+- Never inject Activity context into singletons
+- Constructor injection over field injection
+- @Binds for interface-to-implementation mapping
+- Focused modules per feature boundary
+
+---
+
+### 16. android-networking
+
+Cross-cutting skill — Retrofit, OkHttp, Ktor, caching, error handling, resilience.
+
+**Enforces:**
+- Suspend functions for all API calls
+- Explicit error handling for all HTTP codes
+- OkHttp interceptors for cross-cutting concerns
+- No request/response body logging in production
+- Token refresh in Authenticator
+- kotlinx.serialization or Moshi (not Gson)
+
+---
+
+### 17. android-local-storage
+
+Cross-cutting skill — Room, DataStore, offline-first architecture, caching, encryption.
+
+**Enforces:**
+- Room for relational data, DataStore for key-value
+- Export Room schemas and test all migrations
+- No database operations on main thread
+- Database as single source of truth
+- No sensitive data in unencrypted storage
+- Transactions for multi-table writes
+
+---
+
+### 18. android-auth-identity
+
+Cross-cutting skill — Credential Manager, biometrics, token management, session security.
+
+**Enforces:**
+- Credential Manager API for sign-in flows
+- Tokens in EncryptedSharedPreferences or Keystore
+- Transparent token refresh
+- BiometricPrompt (not FingerprintManager)
+- BIOMETRIC_STRONG for sensitive operations
+- Clear all credentials on logout
+
+---
+
+### 19. android-media
+
+Cross-cutting skill — Media3/ExoPlayer, CameraX, image loading, audio focus, PiP.
+
+**Enforces:**
+- Media3 for playback (not legacy ExoPlayer)
+- CameraX for camera (not Camera2 directly)
+- Coil or Glide for image loading
+- Audio focus management before playback
+- MediaSession for background playback
+- Lifecycle-aware resource release
+
+---
+
+### 20. android-ci-cd
+
+Cross-cutting skill — GitHub Actions, Fastlane, signing, Play Store deployment, build optimization.
+
+**Enforces:**
+- Never store signing keys in repository
+- Unit tests on every PR
+- Release AAB built in CI
+- Pin CI action versions to SHA hashes
+- Gradle build cache and configuration cache
+- Separate CI stages (lint → test → build → deploy)
+
+---
+
+### 21. android-maps-location
+
+Cross-cutting skill — Google Maps SDK, FusedLocationProvider, geofencing, permissions.
+
+**Enforces:**
+- FusedLocationProviderClient (not LocationManager)
+- Request only needed location accuracy
+- Remove location updates when not needed
+- Protect API keys with app restrictions
+- Foreground service for background location
+- Handle approximate vs precise location (API 31+)
+
+---
+
+### 22. android-ml-ondevice
+
+Cross-cutting skill — ML Kit, TensorFlow Lite, Gemini Nano, model management.
+
+**Enforces:**
+- ML Kit for common vision/NLP tasks
+- Run inference off main thread
+- Play Services-based models to reduce APK size
+- Validate model input/output shapes
+- Graceful fallback when models unavailable
+- Quantize models for size and performance
+
+---
+
 ## Enterprise Mode (Auto-Detection)
 
 Enterprise Mode activates automatically if the repository contains:
@@ -429,6 +629,16 @@ CLAUDE.md                                            # Claude Code
 .cursor/rules/android-build-infra.mdc
 .cursor/rules/android-background-work.mdc
 .cursor/rules/android-navigation-best-practices.mdc
+.cursor/rules/play-billing-best-practices.mdc
+.cursor/rules/firebase-best-practices.mdc
+.cursor/rules/android-dependency-injection.mdc
+.cursor/rules/android-networking.mdc
+.cursor/rules/android-local-storage.mdc
+.cursor/rules/android-auth-identity.mdc
+.cursor/rules/android-media.mdc
+.cursor/rules/android-ci-cd.mdc
+.cursor/rules/android-maps-location.mdc
+.cursor/rules/android-ml-ondevice.mdc
 .windsurfrules                                       # Windsurf
 .clinerules/compose-best-practices.md                # Cline (per skill)
 .clinerules/kmp-architecture-best-practices.md
@@ -442,6 +652,16 @@ CLAUDE.md                                            # Claude Code
 .clinerules/android-build-infra.md
 .clinerules/android-background-work.md
 .clinerules/android-navigation-best-practices.md
+.clinerules/play-billing-best-practices.md
+.clinerules/firebase-best-practices.md
+.clinerules/android-dependency-injection.md
+.clinerules/android-networking.md
+.clinerules/android-local-storage.md
+.clinerules/android-auth-identity.md
+.clinerules/android-media.md
+.clinerules/android-ci-cd.md
+.clinerules/android-maps-location.md
+.clinerules/android-ml-ondevice.md
 .aiassistant/rules/compose-best-practices.md         # JetBrains AI (per skill)
 .aiassistant/rules/kmp-architecture-best-practices.md
 .aiassistant/rules/compose-multiplatform-best-practices.md
@@ -454,6 +674,16 @@ CLAUDE.md                                            # Claude Code
 .aiassistant/rules/android-build-infra.md
 .aiassistant/rules/android-background-work.md
 .aiassistant/rules/android-navigation-best-practices.md
+.aiassistant/rules/play-billing-best-practices.md
+.aiassistant/rules/firebase-best-practices.md
+.aiassistant/rules/android-dependency-injection.md
+.aiassistant/rules/android-networking.md
+.aiassistant/rules/android-local-storage.md
+.aiassistant/rules/android-auth-identity.md
+.aiassistant/rules/android-media.md
+.aiassistant/rules/android-ci-cd.md
+.aiassistant/rules/android-maps-location.md
+.aiassistant/rules/android-ml-ondevice.md
 .amazonq/rules/compose-best-practices.md             # Amazon Q (per skill)
 .amazonq/rules/kmp-architecture-best-practices.md
 .amazonq/rules/compose-multiplatform-best-practices.md
@@ -466,6 +696,16 @@ CLAUDE.md                                            # Claude Code
 .amazonq/rules/android-build-infra.md
 .amazonq/rules/android-background-work.md
 .amazonq/rules/android-navigation-best-practices.md
+.amazonq/rules/play-billing-best-practices.md
+.amazonq/rules/firebase-best-practices.md
+.amazonq/rules/android-dependency-injection.md
+.amazonq/rules/android-networking.md
+.amazonq/rules/android-local-storage.md
+.amazonq/rules/android-auth-identity.md
+.amazonq/rules/android-media.md
+.amazonq/rules/android-ci-cd.md
+.amazonq/rules/android-maps-location.md
+.amazonq/rules/android-ml-ondevice.md
 CONVENTIONS.md                                       # Aider
 .aider.conf.yml
 ```
@@ -547,6 +787,16 @@ android-accessibility-best-practices/
 android-build-infra/
 android-background-work/
 android-navigation-best-practices/
+play-billing-best-practices/
+firebase-best-practices/
+android-dependency-injection/
+android-networking/
+android-local-storage/
+android-auth-identity/
+android-media/
+android-ci-cd/
+android-maps-location/
+android-ml-ondevice/
 README.md
 ```
 
