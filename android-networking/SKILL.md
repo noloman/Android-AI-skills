@@ -35,3 +35,5 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/error_handling.md
 - references/caching.md
 - references/ktor_multiplatform.md
+- references/advanced_patterns.md
+- references/testing.md

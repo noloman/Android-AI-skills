@@ -31,3 +31,10 @@
 - Brute force: implement account lockout after N failed attempts (server-side).
 - Replay attacks: use nonces in authentication challenges.
 - Man-in-the-middle: enforce certificate pinning for auth endpoints.
+
+## Play Integrity for Session Security
+- Use Play Integrity API verdicts to assess session trust level.
+- High-risk verdicts: require re-authentication or step-up verification.
+- Low-risk sessions: allow longer session lifetime and fewer re-auth prompts.
+- Bind session token to device integrity verdict — invalidate on verdict change.
+- Don't block all unrecognized devices — many legitimate users have non-standard setups.

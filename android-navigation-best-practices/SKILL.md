@@ -17,6 +17,7 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - Use "standard" launch mode with Navigation — avoid singleTask/singleInstance unless justified.
 - Validate all deep link parameters before processing.
 - Use SavedStateHandle for navigation arguments that must survive process death.
+- Support predictive back gesture (mandatory API 34+) — use OnBackPressedCallback, avoid intercepting system back.
 
 ## Core Patterns
 - Single-activity architecture with Navigation Compose.
@@ -25,9 +26,12 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - Use conditional navigation (auth gates) at the NavHost level.
 - Pass results between destinations via SavedStateHandle, not shared ViewModels.
 - Test navigation with TestNavHostController.
+- Use shared element transitions (Navigation 2.8+) for visual continuity.
 
 ## References
 - references/deep_links.md
 - references/app_links.md
 - references/navigation_patterns.md
 - references/navigation_testing.md
+- references/predictive_back.md
+- references/transitions_animations.md

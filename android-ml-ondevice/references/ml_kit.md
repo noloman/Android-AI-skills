@@ -19,6 +19,12 @@
 - Entity extraction: EntityExtraction.getClient() — extracts dates, addresses, phone numbers.
 - Translation: Translation.getClient(options) — on-device translation between 50+ languages.
 
+## Additional Vision APIs
+- Document Scanner: `GmsDocumentScanning.getClient()` — automatic document detection, cropping, perspective correction.
+- Subject Segmentation: separate foreground subjects from background — selfie mode, background blur.
+- Digital Ink Recognition: `DigitalInkRecognition.getClient()` — handwriting recognition for stylus/touch input.
+- Selfie Segmentation: `SelfieSegmentation.getClient()` — real-time person segmentation.
+
 ## CameraX Integration
 - Use ImageAnalysis use case with ML Kit.
 - Convert ImageProxy to InputImage: InputImage.fromMediaImage(mediaImage, rotation).

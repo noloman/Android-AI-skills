@@ -20,12 +20,14 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - Respect user privacy — process data on-device, do not upload without consent.
 - Request camera/microphone permissions before ML features that use them.
 - Test ML features on low-end devices — not just flagships.
+- Prefer MediaPipe Tasks API for new vision/text/audio ML features — unified, cross-platform, actively maintained.
+- TensorFlow Lite is now rebranded as LiteRT — update references in new code.
 
 ## Core Patterns
 - ML Kit auto-downloads models via Google Play Services (no APK size impact).
 - Use InputImage.fromMediaImage() for CameraX integration with ML Kit.
 - TFLite Interpreter with GPU delegate for acceleration on supported devices.
-- Use Gemini Nano (on-device LLM) via AI Core API for generative tasks.
+- Use Gemini Nano (on-device LLM) via AI Core API for generative tasks — supports text and multimodal input.
 - Implement progressive enhancement — ML features enhance but are not required.
 - Cache inference results when input hasn't changed.
 
@@ -34,3 +36,4 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/tensorflow_lite.md
 - references/gemini_nano.md
 - references/model_management.md
+- references/mediapipe.md

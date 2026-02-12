@@ -32,3 +32,10 @@
 - Store Play Store JSON key in CI secrets — not in repo.
 - Use --verbose flag for debugging CI failures.
 - Run fastlane locally before pushing to CI.
+
+## Modern Alternatives
+- **Gradle Play Publisher**: native Gradle plugin for Play Store uploads — no Ruby/Fastlane dependency.
+- **Triple-T/gradle-play-publisher**: `com.github.triplet.play` — publish AABs, manage listings, promote tracks.
+- Fastlane usage is declining in Android — most teams prefer Gradle-native tooling.
+- Keep Fastlane for: screenshot automation (screengrab), cross-platform iOS+Android workflows.
+- New projects: prefer Gradle Play Publisher for deployment, skip Fastlane unless screenshots are needed.

@@ -37,3 +37,16 @@
 - Upload build reports (lint, test, scan) as CI artifacts.
 - Set timeout on build steps — prevent hung builds from consuming runner time.
 - Use self-hosted runners for faster builds with persistent caches.
+
+## Gradle 8.6+ Configuration Cache
+- Configuration cache is production-ready since Gradle 8.6.
+- Caches the entire configuration phase — subsequent builds skip it entirely.
+- Fix incompatible plugins: avoid `Project` references at execution time, use `Provider` API.
+- Validate: `./gradlew --configuration-cache-problems=warn` to find issues.
+- CI benefit: 10-30% faster builds after first run.
+
+## Build Scan Integration
+- Add `com.gradle.develocity` plugin for automatic build scans.
+- CI publishes scans to Develocity or scans.gradle.com.
+- Link scan URL in PR comments for build failure debugging.
+- Track build time trends across CI runs — detect regressions early.

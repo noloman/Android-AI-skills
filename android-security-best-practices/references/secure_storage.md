@@ -23,3 +23,16 @@
 - Wipe sensitive data (passwords, tokens) from memory after use — overwrite char arrays.
 - Avoid storing secrets in String (immutable, lingers in memory).
 - Use ByteArray and clear it in a finally block.
+
+## Biometric-Bound Keys
+- Use `setUserAuthenticationParameters(timeout, AUTH_BIOMETRIC_STRONG)` for biometric-only access.
+- `CryptoObject`: wraps `Cipher`/`Signature`/`Mac` for biometric-authenticated crypto operations.
+- Pass `CryptoObject` to `BiometricPrompt.authenticate(cryptoObject)` — key is unlocked only on biometric success.
+- Timeout: `0` means per-use authentication, `> 0` allows reuse within timeout seconds.
+
+## StrongBox vs TEE
+- **StrongBox**: dedicated secure hardware chip — highest security, available on Pixel 3+, Samsung flagship.
+- **TEE** (Trusted Execution Environment): hardware-isolated area on main processor — widely available.
+- Use StrongBox: `setIsStrongBoxBacked(true)` in `KeyGenParameterSpec` — falls back to TEE if unavailable.
+- StrongBox has limited key storage — reserve for most sensitive keys (payment, authentication).
+- Check availability: `packageManager.hasSystemFeature(PackageManager.FEATURE_STRONGBOX_KEYSTORE)`.

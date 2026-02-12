@@ -28,6 +28,7 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - Use semantic-release or Gradle Play Publisher for automated releases.
 - Run lint checks (detekt, ktlint, Android Lint) as CI gates.
 - Separate pipelines: PR validation (fast) vs release (thorough).
+- Use gradle/actions/setup-gradle instead of manual Gradle caching — handles cache, wrapper, and daemon automatically.
 
 ## References
 - references/github_actions.md

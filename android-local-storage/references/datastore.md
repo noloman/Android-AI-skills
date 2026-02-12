@@ -33,3 +33,11 @@
 - Writes are serialized — ordered by call sequence.
 - Reads are non-blocking — observe via Flow.
 - No need for synchronized blocks or mutexes.
+
+## Multi-Process DataStore (1.1+)
+- Use `MultiProcessDataStoreFactory` for DataStore shared across processes.
+- Required when: app has multiple processes (e.g., foreground service in separate process).
+- Regular DataStore may corrupt data when accessed from multiple processes.
+- Configure: `MultiProcessDataStoreFactory.create(serializer, produceFile = { file })`.
+- Same API as single-process DataStore — transparent to consumers.
+- Slightly higher overhead than single-process — only use when needed.

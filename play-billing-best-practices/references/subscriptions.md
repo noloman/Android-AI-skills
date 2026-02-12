@@ -27,3 +27,17 @@
 - Offer win-back (pause, downgrade) before cancellation completes.
 - Handle SUBSCRIPTION_CANCELED RTDN on your server.
 - Never revoke access immediately on cancellation — honor paid period.
+
+## Prepaid Plans
+- Prepaid subscriptions require upfront payment — no auto-renewal.
+- User must manually top up before the prepaid period ends.
+- Check `BasePlan.autoRenewing` to distinguish prepaid from auto-renewing.
+- Show clear UI indicating prepaid status and expiration date.
+- Implement top-up flow using `launchBillingFlow` with replacement params.
+
+## User Choice Billing (Alternative Billing)
+- Required in some regions (EU, South Korea) — Google Play allows alternative payment processors.
+- Use `UserChoiceBillingListener` to handle when user selects alternative billing.
+- Client reports the chosen billing option; server verifies accordingly.
+- Still acknowledge purchases through Google Play Billing API.
+- Test both Google Play billing and alternative billing flows.

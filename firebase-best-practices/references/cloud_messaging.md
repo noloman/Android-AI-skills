@@ -1,5 +1,14 @@
 # Cloud Messaging (FCM)
 
+## FCM HTTP v1 API (Required)
+- The legacy FCM server API was sunset June 2024 — migrate all server code to HTTP v1.
+- Endpoint: `https://fcm.googleapis.com/v1/projects/{project}/messages:send`.
+- Uses OAuth 2.0 access tokens (from service account) instead of server keys.
+- Supports platform-specific message customization (android, apns, webpush blocks).
+- Message format uses structured JSON — not the legacy flat key/value format.
+- Token-based targeting replaces legacy registration IDs.
+- Admin SDK (Node.js, Python, Java, Go) handles v1 API automatically.
+
 ## Token Management
 - FCM token is generated on first app start — unique per app instance.
 - Override onNewToken() in FirebaseMessagingService — send new token to your server.

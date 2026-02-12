@@ -27,7 +27,7 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - Pin certificates for critical API endpoints.
 - Prefer explicit intents over implicit for internal communication.
 - Restrict ContentProvider access with read/write permissions.
-- Use SafetyNet/Play Integrity API for device attestation when needed.
+- Use Play Integrity API for device attestation — SafetyNet is deprecated and shut down.
 
 ## References
 - references/secure_storage.md
@@ -36,3 +36,4 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/intent_component_security.md
 - references/r8_proguard.md
 - references/secrets_management.md
+- references/play_integrity.md

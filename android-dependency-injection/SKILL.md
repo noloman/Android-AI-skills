@@ -35,3 +35,4 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/multi_module_di.md
 - references/testing_di.md
 - references/common_mistakes.md
+- references/advanced_patterns.md

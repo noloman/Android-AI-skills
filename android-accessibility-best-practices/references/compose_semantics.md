@@ -46,3 +46,12 @@
 - assert(SemanticsMatcher.keyIsDefined(SemanticsProperties.Heading)).
 - printToLog() to dump the semantic tree for debugging.
 - Verify role, state, and content description in tests.
+
+## Font Scaling 200% (Android 14+)
+- Android 14+ supports non-linear font scaling up to 200% (was capped at ~130%).
+- Text at 200% can be 2x the normal size — layouts MUST handle this without clipping or overlap.
+- Use `sp` for all text sizes (default in Compose) — never `dp` for text.
+- Test at maximum font scale: Settings > Display > Font size > drag to max.
+- Common issues: text overlapping buttons, text clipped in fixed-height containers, horizontal scrolling.
+- Fix: use `wrapContentHeight()`, avoid fixed-height text containers, use scrollable layouts.
+- `LocalDensity.current.fontScale` to detect current font scaling for adaptive layouts.

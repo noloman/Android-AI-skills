@@ -26,3 +26,10 @@
 - Use Accessibility Scanner to detect targets smaller than 48dp.
 - Enable "Show layout bounds" in Developer Options for visual verification.
 - Test on actual devices — touch accuracy varies by device and user.
+
+## WCAG 2.2 Enhanced Target Size (2.5.8 - AA)
+- Target size should be at least 24x24 CSS pixels — Android's 48dp exceeds this.
+- Exception: targets within a sentence of text (inline links).
+- Exception: user agent default controls (native checkboxes, radio buttons).
+- Material3 components meet this requirement — ensure custom components do too.
+- For dense UIs (data tables, grids): use touch expansion techniques to reach 48dp without visual size increase.

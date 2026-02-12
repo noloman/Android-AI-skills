@@ -31,3 +31,11 @@
 - RevenueCat tracks purchases without taking over billing — no double-charging.
 - Transition to full mode after migration is validated.
 - Observer Mode does not make purchases — only observes.
+
+## SDK v8 Compatibility
+- RevenueCat SDK v8 requires Kotlin 1.9+ and minimum Android API 21.
+- Major API changes: `PurchasesConfiguration` builder replaces many legacy config methods.
+- `Purchases.configure()` is now the only entry point — static convenience methods removed.
+- Kotlin coroutines support: all SDK methods have suspend function variants.
+- Migration from v7: update configure call, replace callback-based APIs with suspend functions or Flow.
+- Check RevenueCat migration guide for breaking changes before upgrading.

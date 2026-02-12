@@ -28,3 +28,11 @@
 - Use IdlingResource for async operation synchronization.
 - Avoid hardcoded sleep — use waitUntil or idling resources.
 - Test on minimum and maximum supported API levels.
+
+## Test Orchestrator v2
+- Android Test Orchestrator runs each test in its own Instrumentation instance.
+- Benefits: full isolation (no shared state), crash recovery (one test crash doesn't kill suite).
+- Enable: `testOptions { execution = "ANDROIDX_TEST_ORCHESTRATOR" }`.
+- Use `clearPackageData` option to wipe app data between tests — cleanest isolation.
+- Trade-off: slower execution due to process restart — use for flaky test suites or security-sensitive tests.
+- Alternative: use Hilt test rules with `@UninstallModules` for DI-level isolation without full process restart.

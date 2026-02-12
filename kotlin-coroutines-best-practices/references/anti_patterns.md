@@ -28,3 +28,22 @@
 - Mutex when limitedParallelism(1) suffices.
 - Raw Channel when SharedFlow or callbackFlow fits.
 - Custom CoroutineScope when viewModelScope/lifecycleScope already matches lifecycle.
+
+## Additional Anti-Patterns
+- **`onEach { delay() }` as rate limiter**: delays every emission, including the first. Use `debounce` or `sample` instead.
+- **Context leaking via lambda capture**: capturing `Activity` context in coroutine lambda → memory leak. Use `applicationContext` or `WeakReference`.
+- **`runCatching` on suspend functions**: catches `CancellationException` silently. Use explicit try/catch and rethrow `CancellationException`:
+```kotlin
+// BAD
+val result = runCatching { suspendFunction() }
+
+// GOOD
+val result = try {
+    Result.success(suspendFunction())
+} catch (e: CancellationException) {
+    throw e
+} catch (e: Exception) {
+    Result.failure(e)
+}
+```
+- **SharedFlow with replay in ViewModel**: replay(1) + onStart emit = duplicate first event. Use StateFlow for state, SharedFlow(replay=0) for events.

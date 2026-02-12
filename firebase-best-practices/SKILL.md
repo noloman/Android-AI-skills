@@ -20,6 +20,8 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - Never store Firestore documents larger than 1 MB.
 - Rate-limit Remote Config fetches — minimum 12-hour interval in production.
 - Handle FCM token rotation — re-register on onNewToken.
+- Use FCM HTTP v1 API only — legacy FCM server API was sunset June 2024.
+- Implement Google Consent Mode V2 before collecting analytics in the EU (mandatory since March 2024).
 
 ## Core Patterns
 - Initialize Firebase in Application.onCreate() or use App Startup library.

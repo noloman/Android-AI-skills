@@ -41,3 +41,18 @@
 - Process webhooks idempotently — they can be delivered multiple times.
 - Use webhooks to sync subscription state with your backend.
 - Verify webhook authenticity with the shared secret.
+
+## Experiments
+- RevenueCat Experiments enable A/B testing for offerings and paywalls.
+- Create experiments in dashboard: define control and treatment groups.
+- SDK automatically assigns users to experiment groups — no client code needed.
+- Measure: conversion rate, revenue per user, trial conversion, churn.
+- Use experiments for: pricing tests, trial length optimization, paywall design comparisons.
+- Statistical significance reported in dashboard — wait for sufficient sample size.
+
+## RevenueCat Debugger
+- Use the RevenueCat Debugger overlay for real-time SDK diagnostics.
+- Shows: current CustomerInfo, active entitlements, offerings, SDK configuration.
+- Enable in debug builds: `Purchases.logLevel = LogLevel.VERBOSE`.
+- Dashboard: customer timeline shows full purchase history and entitlement changes.
+- Network inspector: verify SDK API calls and responses in device logs.

@@ -37,8 +37,16 @@ When Enterprise Mode is not active:
 - Stable keys in Lazy lists
 - Avoid allocations in hot recomposition paths
 - Use MaterialTheme.colorScheme
+- Strong skipping mode is default (Compose Compiler 2.0+) — reduces need for manual @Stable/@Immutable annotations.
+- Use Material3 adaptive layouts (NavigationSuiteScaffold, ListDetailPaneScaffold) for large screens.
 
 ## References
 - references/enterprise_mode.md
 - references/compose_compiler_stability.md
 - references/performance_budgets.md
+- references/adaptive_layouts.md
+- references/shared_element_transitions.md
+- references/examples.md
+- references/design_tokens.md
+- references/material_migration.md
+- references/review_checklist.md

@@ -39,3 +39,15 @@
 - Use SavedStateHandle on the previous back stack entry for results.
 - previousBackStackEntry?.savedStateHandle?.set("key", result).
 - Avoid shared ViewModels for result passing — they create tight coupling.
+
+## Multi-Stack Bottom Navigation
+- Each bottom tab maintains its own back stack (Navigation 2.8+).
+- Use `NavHost` per tab or `saveState`/`restoreState` on `navigate()`.
+- Preserve scroll position and state when switching tabs.
+- Re-selecting the current tab pops to the tab's start destination.
+
+## Navigation 2.8 Serialization
+- Routes use `@Serializable` data classes/objects (replaces string routes).
+- Type-safe argument passing — compiler verifies argument types.
+- Custom NavTypes for complex types: implement `NavType<T>` with serialization.
+- Migration: replace `composable("route/{arg}")` with `composable<RouteClass>`.

@@ -32,3 +32,17 @@
 - Set password requirements in Firebase Console.
 - Never store FirebaseUser references — always access via FirebaseAuth.currentUser.
 - Handle FirebaseAuthException codes: ERROR_USER_NOT_FOUND, ERROR_WRONG_PASSWORD, etc.
+
+## Passkey Support
+- Firebase Auth supports passkeys via Credential Manager integration.
+- Passkeys replace passwords with device biometric/PIN — phishing-resistant.
+- Use `createCredential()` for passkey registration, `getCredential()` for sign-in.
+- Passkeys sync across user's devices via Google Password Manager or iCloud Keychain.
+- Implement as primary sign-in option with password fallback for older devices.
+
+## Multi-Factor Authentication (MFA)
+- Enable MFA in Firebase Console > Authentication > Sign-in method.
+- Supported second factors: SMS, TOTP (authenticator apps).
+- Enroll second factor: `user.multiFactor.enroll(assertion)`.
+- Handle MFA challenge: catch `FirebaseAuthMultiFactorException`, resolve with enrolled factor.
+- MFA is critical for apps handling financial data, health data, or enterprise accounts.

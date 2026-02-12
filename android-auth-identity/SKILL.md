@@ -35,3 +35,4 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/token_management.md
 - references/google_sign_in.md
 - references/session_security.md
+- references/digital_credentials.md

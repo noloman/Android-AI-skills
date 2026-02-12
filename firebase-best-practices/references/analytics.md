@@ -34,3 +34,12 @@
 - Enable debug mode: adb shell setprop debug.firebase.analytics.app <package>.
 - Link to BigQuery for raw event export and advanced analysis.
 - Review automatically collected events — disable unwanted ones if needed.
+
+## Consent Mode V2 (Mandatory EU — March 2024)
+- Consent Mode V2 adds two new signals: `AD_USER_DATA` and `AD_PERSONALIZATION`.
+- Required for EU user data sent to Google services (Analytics, Ads).
+- Implementation: `setConsent(mapOf(ConsentType.AD_USER_DATA to ConsentStatus.GRANTED, ...))`.
+- Four consent types: `ANALYTICS_STORAGE`, `AD_STORAGE`, `AD_USER_DATA`, `AD_PERSONALIZATION`.
+- Without consent: Google uses cookieless pings — modeling fills data gaps.
+- Integrate with your Consent Management Platform (CMP) — update consent on user choice change.
+- Test consent states: all granted, all denied, mixed (analytics yes, ads no).

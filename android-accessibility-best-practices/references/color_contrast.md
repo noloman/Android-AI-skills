@@ -28,3 +28,10 @@
 - WebAIM Contrast Checker: manual ratio calculation.
 - Colour Contrast Analyser (desktop): eyedropper-based tool.
 - Android Studio Layout Inspector: check rendered colors.
+
+## WCAG 2.2 Updates
+- **Non-text contrast (1.4.11)**: UI components and graphical objects need ≥ 3:1 contrast against adjacent colors.
+- Applies to: form field borders, icon-only buttons, chart elements, custom controls.
+- **Focus appearance (2.4.13 - AAA)**: focus indicator must have ≥ 3:1 contrast and sufficient size.
+- Material3 default focus indicators generally meet this requirement.
+- Audit custom focus indicators — ensure they're visible on all surface colors.

@@ -20,12 +20,26 @@
 - Extraction: pull structured data from unstructured text.
 - Rewriting: adjust tone, formalize, or simplify text.
 
+## Multimodal Support
+- Gemini Nano now supports multimodal input: text + images.
+- Use for: image description, visual Q&A, document understanding.
+- Pass Bitmap alongside text prompt for multimodal inference.
+- Still limited compared to cloud Gemini — best for simple visual understanding.
+
+## Prompt Engineering
+- Keep prompts concise and specific — smaller model responds better to focused instructions.
+- Use system instructions to set context and format expectations.
+- Provide examples (few-shot) for consistent output format.
+- Limit output length with explicit instructions — prevents rambling.
+- Use structured output format (JSON, bullet points) for parseable results.
+
 ## Limitations
-- Available on limited devices — always implement fallback.
-- Smaller context window than cloud Gemini models.
-- Slower than cloud inference for complex tasks.
-- No image/multimodal support in initial on-device version.
+- Available on limited devices (Pixel 8+, select Samsung, select others) — always implement fallback.
+- Smaller context window (~4K tokens) than cloud Gemini models.
+- Slower than cloud inference for complex tasks — but no network latency.
 - Model updates are system-level — app cannot control model version.
+- Not suitable for: long documents, complex reasoning, code generation.
+- Token limits: measure input/output tokens, truncate input if needed.
 
 ## Best Practices
 - Always check availability: GenerativeModel.isAvailable().

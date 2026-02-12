@@ -30,3 +30,18 @@
 - Handle GetCredentialResponse — check credential type and extract data.
 - Handle exceptions: NoCredentialException (no saved credentials), GetCredentialCancellationException (user dismissed).
 - Call clearCredentialState() on logout — clears Credential Manager state.
+
+## Passkey Autofill (Android 14+)
+- Credential Manager integrates with autofill — passkeys appear in keyboard suggestions.
+- Users can authenticate without navigating to a sign-in screen.
+- Conditional UI: call `getCredential()` with `isConditional = true` for passive credential availability.
+- Conditional requests don't show bottom sheet — credentials appear in autofill dropdown.
+- Fall back to explicit sign-in if conditional request returns no credentials.
+
+## Detailed Exceptions
+- `NoCredentialException`: no saved credentials for the request — show sign-up or manual sign-in.
+- `GetCredentialCancellationException`: user dismissed the bottom sheet.
+- `GetCredentialInterruptedException`: request interrupted (e.g., app backgrounded).
+- `GetCredentialProviderConfigurationException`: no credential providers configured on device.
+- `GetCredentialUnknownException`: unexpected error — log and show generic error.
+- Handle each exception type specifically for better UX and debugging.

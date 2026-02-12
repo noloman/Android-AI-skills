@@ -38,3 +38,17 @@
 - Player auto-selects quality based on bandwidth.
 - Use TrackSelectionParameters to constrain resolution/bitrate.
 - Prefer adaptive streaming for long-form content.
+
+## Media3 1.3+ Features
+- Compose UI: `media3-ui-compose` provides `PlayerSurface` and composable controls.
+- `MediaController` as `Player`: connect to `MediaSessionService` from Compose UI.
+- Improved subtitle rendering: SSA/ASS support, styled subtitles.
+- `PreloadMediaSource` for seamless transitions between playlist items.
+- `AnalyticsListener` improvements: more granular playback event tracking.
+
+## DRM (Widevine)
+- Use `DefaultDrmSessionManager` with Widevine UUID for DRM-protected content.
+- Configure license URL: `MediaItem.DrmConfiguration.Builder(widevineUuid).setLicenseUri(url)`.
+- Offline DRM: download and store DRM licenses for offline playback.
+- Handle DRM errors: `DrmSessionException` — license expired, device not provisioned.
+- Test with Widevine test streams before production DRM integration.

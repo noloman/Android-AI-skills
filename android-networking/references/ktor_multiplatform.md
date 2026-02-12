@@ -31,3 +31,11 @@
 - Configure MockEngine with expected responses.
 - Test error scenarios: network failure, server errors, malformed responses.
 - MockEngine runs on JVM — fast, no network required.
+
+## Ktor 3.x Breaking Changes
+- Plugin API rewritten: `install(ContentNegotiation)` syntax unchanged, but custom plugin API changed.
+- `HttpClient` configuration: `engine { }` block moved — configure engine-specific settings in `HttpClientEngineConfig`.
+- `defaultRequest { }` now uses `HttpRequestBuilder` — URL builder syntax changed.
+- `Logging` plugin: `LogLevel` enum replaced with `Logger` interface customization.
+- Dependency coordinates: `io.ktor:ktor-client-*` unchanged, but internal package structure reorganized.
+- Migration: check Ktor 3.0 migration guide — most changes are source-incompatible but straightforward.

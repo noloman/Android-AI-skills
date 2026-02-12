@@ -36,3 +36,5 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/battery_optimization.md
 - references/strict_mode.md
 - references/app_size.md
+- references/compose_performance.md
+- references/tracing.md

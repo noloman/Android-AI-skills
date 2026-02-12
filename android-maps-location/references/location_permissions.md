@@ -32,3 +32,10 @@
 - Test on API 31+ for approximate/precise distinction.
 - Use mock locations for reproducible testing.
 - Verify background location behavior with app in background and device in Doze.
+
+## API 34+ Fine Location Changes
+- Android 14 doesn't add new location permissions, but tightens enforcement.
+- Apps with only `ACCESS_COARSE_LOCATION` can no longer "upgrade" to fine location at runtime.
+- To request fine after coarse: must request both together, user sees "Precise"/"Approximate" toggle.
+- Background location review in Play Console is stricter — provide clear justification and video demo.
+- Best practice: request coarse-only when approximate is sufficient (weather, regional content).

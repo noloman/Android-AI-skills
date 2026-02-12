@@ -24,3 +24,12 @@
 - Do not implement custom TrustManagers — breaks certificate validation.
 - Do not use custom HostnameVerifiers — allows MITM attacks.
 - Use OkHttp or Ktor with default security settings.
+
+## Certificate Pinning Decision Matrix
+- **Pin via Network Security Config**: recommended for most apps — declarative, easy to update, supports backup pins.
+- **Pin via OkHttp CertificatePinner**: use when you need programmatic control or custom pin logic.
+- **Don't pin at all**: acceptable for apps without high-security requirements — TLS + proper CA validation is sufficient.
+- **When to pin**: banking apps, healthcare apps, apps handling financial data, apps communicating with known servers.
+- **When NOT to pin**: apps using CDNs with rotating certificates, apps with many third-party API endpoints.
+- **Rotation plan**: always have at least 2 pins (current + backup), rotate before expiration.
+- **Failure mode**: pinning failure = network failure — must have clear error messaging and support path.

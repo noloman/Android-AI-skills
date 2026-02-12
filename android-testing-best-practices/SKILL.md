@@ -36,3 +36,4 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/room_migration_testing.md
 - references/test_architecture.md
 - references/ci_testing.md
+- references/test_fixtures.md

@@ -32,3 +32,4 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/foreground_services.md
 - references/notifications.md
 - references/scheduling.md
+- references/testing_background_work.md

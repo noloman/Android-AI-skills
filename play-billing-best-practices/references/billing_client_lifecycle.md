@@ -26,3 +26,10 @@
 - Typical pattern: connect in onResume, disconnect in onPause.
 - For always-available billing, use a singleton wrapper with automatic reconnection.
 - Do not hold BillingClient references beyond the Activity lifecycle.
+
+## Library 7 Changes
+- `enablePendingPurchases()` now requires `PendingPurchasesParams` — specify `enableOneTimeProducts()` and/or `enablePrepaidPlans()`.
+- `setListener` replaced by `setPurchasesUpdatedListener` in builder.
+- `ProductType.INAPP` and `ProductType.SUBS` unchanged.
+- `BillingClient.ConnectionState` enum for checking connection state.
+- Improved automatic reconnection — less manual retry logic needed.

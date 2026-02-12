@@ -35,3 +35,4 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/image_loading.md
 - references/audio_focus.md
 - references/picture_in_picture.md
+- references/camera_extensions.md

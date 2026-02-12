@@ -28,3 +28,16 @@
 - System may stop shortService after the timeout.
 - Use for: quick uploads, brief processing, transient operations.
 - Prefer WorkManager expedited work over short foreground services when possible.
+
+## API 35 Restrictions
+- `dataSync` foreground service type: limited to 6 hours of continuous execution.
+- `mediaProcessing` type: limited to 6 hours (new type in API 35).
+- System stops services exceeding the time limit — must handle gracefully.
+- For work exceeding time limits: break into chunks and use WorkManager.
+- `location`, `mediaPlayback`, `camera`, `microphone` types: no time limit.
+
+## IntentService Migration
+- `IntentService` is deprecated — use WorkManager or CoroutineWorker instead.
+- IntentService limitations: no lifecycle awareness, no guaranteed execution, no constraints.
+- Migration: replace IntentService with `OneTimeWorkRequest` + `CoroutineWorker`.
+- For immediate work: use coroutines in ViewModel or foreground service.

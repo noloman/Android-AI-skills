@@ -18,6 +18,8 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - Modularize by feature: feature-api (contracts/routes) and feature-impl (screens/DI).
 - Dependencies flow inward — feature modules never depend on other feature modules.
 - Use implementation scope by default — api scope only when the type is part of the module's public API.
+- Use KSP for annotation processing — KAPT is deprecated and does not support K2 compiler.
+- Use the Compose Compiler Gradle plugin (`org.jetbrains.kotlin.plugin.compose`) — not the old compiler artifact dependency.
 
 ## Core Patterns
 - Group related dependencies in version catalog bundles.
@@ -26,6 +28,7 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - Run dependency analysis plugin to detect unused or misscoped dependencies.
 - Use Gradle build cache and configuration cache for faster builds.
 - Pin Gradle wrapper version in gradle-wrapper.properties.
+- Kotlin 2.0+: K2 compiler is default — verify all annotation processors (Room, Hilt, Moshi) are KSP-compatible.
 
 ## References
 - references/version_catalogs.md
@@ -33,3 +36,5 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/build_variants.md
 - references/modularization.md
 - references/dependency_management.md
+- references/ksp_migration.md
+- references/build_performance.md

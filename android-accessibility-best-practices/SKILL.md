@@ -35,3 +35,4 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/touch_targets.md
 - references/color_contrast.md
 - references/compose_semantics.md
+- references/automated_testing.md

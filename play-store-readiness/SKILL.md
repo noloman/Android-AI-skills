@@ -17,7 +17,7 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - Enroll in Play App Signing — use a separate upload key.
 - Ship AAB (Android App Bundle), not APK.
 - Use staged rollout (5–10%) for all production releases.
-- Monitor crash-free rate — target ≥ 99%.
+- Monitor crash-free rate — target ≥ 99.5% (Google Play's "bad behavior" threshold is 99%).
 - Never ship release builds with debuggable=true.
 - Increment versionCode on every release.
 
@@ -28,6 +28,7 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - Upload mapping.txt (R8) and native symbols for crash symbolication.
 - Write release notes for every staged rollout.
 - Have a rollback plan before every release.
+- Target API 35 (Android 15) for new apps — edge-to-edge is mandatory, foreground service restrictions tightened.
 
 ## References
 - references/data_safety.md

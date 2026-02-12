@@ -39,3 +39,16 @@
 - Inject dependencies via @AssistedInject constructor.
 - @Assisted for workerParams: Context and WorkerParameters.
 - Register HiltWorkerFactory in Application.
+
+## WorkManager 2.9+ Features
+- **Flow-based observation**: `getWorkInfoByIdFlow(id)` — native Kotlin Flow support.
+- **Improved diagnostics**: `WorkManager.getInstance(context).getWorkInfosByTag("tag")` with detailed state.
+- **Foreground service type**: specify foreground service type for long-running workers.
+- `setForeground(ForegroundInfo(id, notification, FOREGROUND_SERVICE_TYPE_DATA_SYNC))`.
+
+## Expedited Work
+- `setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)` for urgent tasks.
+- Expedited work has higher priority — runs sooner, less affected by Doze.
+- Quota system limits expedited work — excess falls back to regular scheduling.
+- Use for: important sync after user action, time-sensitive processing.
+- NOT a replacement for foreground services — still subject to system constraints.

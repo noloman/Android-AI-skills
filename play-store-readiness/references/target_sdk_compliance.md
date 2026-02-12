@@ -23,6 +23,16 @@
 - Must register for RECEIVER_EXPORTED or RECEIVER_NOT_EXPORTED on dynamic receivers.
 - Photo/video partial access (READ_MEDIA_VISUAL_USER_SELECTED).
 
+## API 35 (Android 15)
+- Edge-to-edge is mandatory — apps draw behind system bars by default, no opt-out.
+- Private Space: users can create a separate space for sensitive apps — handle account separation.
+- Foreground service restrictions tightened: `dataSync` type limited to 6 hours, `mediaProcessing` to 6 hours.
+- New foreground service types: `mediaProcessing` added.
+- 16KB page size support required for native code (NDK) — rebuild .so libraries with 16KB alignment.
+- Minimum target SDK for install: API 24 — apps targeting below 24 cannot be installed on Android 15 devices.
+- Package visibility restrictions expanded.
+- Health Connect integration: new health data categories and granular permissions.
+
 ## Compatibility Framework
 - Use Developer Options > App Compatibility Changes to test API behavior changes.
 - Toggle individual changes on/off for targeted testing.

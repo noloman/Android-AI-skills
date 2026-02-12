@@ -38,3 +38,13 @@
 - Test on multiple devices — camera behavior varies significantly.
 - Use PreviewView.ImplementationMode.PERFORMANCE for most use cases.
 - Handle camera switching (front/back) by rebinding use cases.
+
+## CameraX Extensions (1.4+)
+- Extensions API provides manufacturer-optimized camera effects.
+- Available extensions: NIGHT, HDR, BOKEH (portrait), FACE_RETOUCH, AUTO.
+- Check availability: `ExtensionsManager.getInstanceAsync()` → `isExtensionAvailable(cameraSelector, ExtensionMode.NIGHT)`.
+- Apply extension: `extensionsManager.getExtensionEnabledCameraSelector(cameraSelector, ExtensionMode.NIGHT)`.
+- Extensions work with ImageCapture and Preview use cases.
+- Not all extensions available on all devices — always check availability.
+- Cannot combine extensions with custom ImageAnalysis processing.
+- Test on target devices — extension quality varies by manufacturer.

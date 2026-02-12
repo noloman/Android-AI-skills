@@ -30,3 +30,11 @@
 - Access in Compose: hiltViewModel() from hilt-navigation-compose.
 - Access in Fragment: by viewModels().
 - SavedStateHandle is automatically available in @HiltViewModel constructor.
+
+## Hilt with Navigation Compose
+- Use `hiltViewModel()` from `hilt-navigation-compose` for ViewModel injection in composable destinations.
+- `hiltViewModel()` scopes ViewModel to the current `NavBackStackEntry`.
+- Shared ViewModel across destinations: `hiltViewModel(parentEntry)` where `parentEntry` is the navigation graph's back stack entry.
+- Access parent entry: `val parentEntry = remember(navBackStackEntry) { navController.getBackStackEntry("parentRoute") }`.
+- Each composable destination gets its own ViewModel instance — not shared by default.
+- Use `hiltViewModel(navBackStackEntry)` explicitly when sharing is needed.

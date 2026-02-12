@@ -32,3 +32,10 @@
 - Check Play Store app version — billing requires recent Play Store.
 - Verify google-services.json matches the build variant.
 - Clear Play Store cache/data if billing flow gets stuck.
+
+## Play Console Test Management
+- Manage test purchases in Play Console > Order Management.
+- Cancel, refund, or void test purchases directly from console.
+- Clear purchase history for license testers when testing re-purchase flows.
+- Test subscription renewal: license tester subscriptions renew every 5 minutes.
+- Test grace period and account hold with shortened timelines for license testers.

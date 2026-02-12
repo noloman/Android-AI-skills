@@ -32,3 +32,16 @@
 - Test every migration path with MigrationTestHelper.
 - Use @AutoMigration for simple changes (add column, add table).
 - Never use fallbackToDestructiveMigration for databases with user data.
+
+## Room 2.6+ Features
+- **Multi-map return types**: `@Query("SELECT * FROM users JOIN orders") fun getUserOrders(): Flow<Map<User, List<Order>>>`.
+- **Improved KSP support**: faster builds, better error messages, full feature parity with KAPT.
+- **Value classes**: Room supports Kotlin value classes as column types.
+- **Paging 3 integration**: `@Query("SELECT * FROM items") fun pagingSource(): PagingSource<Int, Item>`.
+
+## Full-Text Search (FTS)
+- `@Fts4` annotation on entity for full-text search support.
+- Use `MATCH` queries: `@Query("SELECT * FROM items_fts WHERE items_fts MATCH :query")`.
+- FTS4 is recommended over FTS3 — better performance, more features.
+- FTS5 available on API 24+ — use for advanced ranking and snippet support.
+- Keep FTS table synced with main table using triggers or rebuild.

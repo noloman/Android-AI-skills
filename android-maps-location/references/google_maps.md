@@ -37,3 +37,18 @@
 - Handle Google Play Services unavailability gracefully.
 - Set initial camera position from user's last known location.
 - Test on devices without Google Play Services (Huawei, etc.) — provide fallback.
+
+## Advanced Markers
+- `AdvancedMarkerElement` replaces legacy `Marker` for enhanced customization.
+- Custom Compose content as marker: `MarkerComposable` (Maps Compose 4.0+).
+- PinElement for customizable pins: colors, icons, labels without custom bitmaps.
+- Advanced Markers support: collision behavior, altitude, z-index.
+- Migration: replace `Marker()` with `AdvancedMarker()` composable.
+
+## Maps Compose 6.x
+- `GoogleMap` composable supports all map types and gestures.
+- `MapEffect` for accessing raw `GoogleMap` object when needed.
+- `rememberMarkerState` for state-hoisted marker positions.
+- Clustering: use `Clustering(items = markers, onClusterClick = {})` composable.
+- Street View: `StreetView(streetViewPanoramaOptions)` composable.
+- Performance: `MapProperties(isMyLocationEnabled = ...)` for lazy property updates.

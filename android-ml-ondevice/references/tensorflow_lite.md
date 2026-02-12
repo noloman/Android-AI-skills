@@ -40,3 +40,21 @@
 - Use model metadata for input/output specification.
 - Profile inference time: measure on target devices, not just emulator.
 - Consider TFLite Model Maker for custom model training with small datasets.
+
+## LiteRT Rebranding
+- TensorFlow Lite is being rebranded as LiteRT (Lite Runtime) under Google AI Edge.
+- Package migration: `org.tensorflow:tensorflow-lite` → LiteRT artifacts (in transition).
+- API surface remains the same — `Interpreter`, delegates, `TensorBuffer`.
+- New code should reference LiteRT branding; existing code continues to work.
+
+## NNAPI Deprecation
+- Android NNAPI is deprecated starting Android 15 (API 35).
+- Migrate from `NnApiDelegate` to GPU delegate or MediaPipe acceleration.
+- NNAPI delegate will continue to work on older API levels.
+- For new projects, prefer MediaPipe Tasks API over raw TFLite/LiteRT.
+
+## MediaPipe Model Maker
+- Replaces TFLite Model Maker for custom model training.
+- Supports: object detection, image classification, text classification, gesture recognition.
+- Transfer learning with pre-trained models — train with small datasets.
+- Exports MediaPipe Task bundles (`.task` files) or TFLite models.

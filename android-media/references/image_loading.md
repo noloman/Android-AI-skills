@@ -35,3 +35,24 @@
 - Use appropriate image sizes — don't load 4000px images for 100dp thumbnails.
 - Use ContentScale.Crop or ContentScale.Fit appropriately.
 - Cancel unnecessary requests — both libraries handle lifecycle automatically.
+
+## Coil 3.x Changes
+- Coil 3.x supports Compose Multiplatform (Android, iOS, Desktop, WASM).
+- `ImageLoader` configuration simplified — `ImageLoaderFactory` interface on Application.
+- `AsyncImage` API unchanged — but internal engine rewritten for performance.
+- Disk cache moved to `coil3.disk.DiskCache` — configure in `ImageLoader.Builder`.
+- KMP setup: `coil3-compose` for shared, `coil3-network-okhttp` for Android, `coil3-network-ktor` for KMP.
+
+## Photo Picker (Android 13+)
+- Use `ActivityResultContracts.PickVisualMedia()` — no READ_MEDIA_IMAGES permission needed.
+- `PickVisualMedia.ImageOnly`, `PickVisualMedia.VideoOnly`, `PickVisualMedia.ImageAndVideo`.
+- `PickMultipleVisualMedia(maxItems)` for multi-select.
+- Falls back to document picker on older devices.
+- Preferred over `READ_MEDIA_IMAGES` permission for most image selection use cases.
+
+## Modern Image Formats
+- **AVIF**: superior compression to WebP/JPEG, supported on API 34+.
+- **HEIF/HEIC**: Apple-originated format, supported on API 26+ for decode.
+- **WebP**: widely supported (API 14+ decode, API 30+ encode), good compression.
+- Coil and Glide handle format detection automatically — serve optimal format from CDN.
+- For user-generated content: accept HEIF, transcode to JPEG/WebP for upload if needed.

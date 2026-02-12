@@ -32,3 +32,10 @@
 - Link purchases to authenticated user accounts.
 - Detect duplicate tokens — prevent purchase token reuse attacks.
 - Log all verification results for audit and debugging.
+
+## Voided Purchases API
+- Use `purchases.voidedpurchases.list` to detect refunded or charged-back purchases.
+- Poll periodically or on user login to revoke entitlements for voided purchases.
+- Voided purchases include: user-initiated refunds, chargebacks, Play policy reversals.
+- Revoke entitlements server-side — do not trust client state for voided purchases.
+- Log voided purchase events for fraud detection.

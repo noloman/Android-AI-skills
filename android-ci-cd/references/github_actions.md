@@ -4,8 +4,8 @@
 - Trigger on: push to main, pull_request.
 - Runner: ubuntu-latest (Linux — fastest for Android builds).
 - Set up JDK: actions/setup-java with distribution: 'temurin' and java-version: '17'.
-- Cache Gradle: actions/cache with ~/.gradle/caches and ~/.gradle/wrapper.
-- Or use gradle/actions/setup-gradle for automatic caching.
+- Use gradle/actions/setup-gradle v4 — handles Gradle caching, wrapper download, and daemon lifecycle automatically.
+- Replaces manual actions/cache for Gradle — better cache invalidation and smaller cache sizes.
 
 ## Build Steps
 - Make gradlew executable: chmod +x gradlew.
@@ -33,3 +33,16 @@
 - Never echo secrets in workflow logs.
 - Use OIDC for trusted publishing (npm, PyPI) — no long-lived tokens.
 - Review third-party actions before adoption.
+
+## Gradle Managed Devices for CI
+- Define virtual devices in build.gradle.kts: `managedDevices { devices { ... } }`.
+- CI runs `./gradlew pixelTabletApi34DebugAndroidTest` — Gradle provisions and manages the device.
+- Advantages: deterministic device setup, no manual emulator configuration, cacheable.
+- Use ATD (Automated Test Device) images for faster boot and less flakiness.
+- Combine with matrix strategy for multi-API-level testing.
+
+## Dependabot for Actions
+- Enable Dependabot for GitHub Actions: `.github/dependabot.yml` with `package-ecosystem: "github-actions"`.
+- Automatically creates PRs when action versions have security updates.
+- Complement SHA pinning — Dependabot updates the pinned SHAs.
+- Review Dependabot PRs for breaking changes before merging.

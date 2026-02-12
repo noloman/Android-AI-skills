@@ -35,3 +35,4 @@ Cross-cutting skill — always activates alongside the project-type-specific ski
 - references/offline_first.md
 - references/cache_strategies.md
 - references/encryption.md
+- references/migration_testing.md

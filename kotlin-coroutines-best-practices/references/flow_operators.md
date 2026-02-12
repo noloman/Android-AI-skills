@@ -39,3 +39,10 @@
 ## Context
 - flowOn(dispatcher) — change upstream dispatcher. Does NOT affect downstream.
 - Never use withContext inside flow {} builder — use flowOn instead.
+
+## Timeout
+- `withTimeout(timeMillis) { }` — throws `TimeoutCancellationException` if block exceeds time.
+- `withTimeoutOrNull(timeMillis) { }` — returns null instead of throwing on timeout.
+- Use in Flow: `flow.timeout(duration)` (kotlinx-coroutines 1.7+) — cancels flow if no emission within duration.
+- Common use: API call timeouts, user interaction deadlines, polling with expiry.
+- `withTimeoutOrNull` is preferred when timeout is an expected case, not an error.

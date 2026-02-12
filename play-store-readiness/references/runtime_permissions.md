@@ -19,6 +19,12 @@
 - Use Photo Picker (no permission required) instead of READ_MEDIA_IMAGES when possible.
 - Use Scoped Storage (MediaStore, SAF) instead of broad file access.
 
+## API 35 Permission Changes
+- No new runtime permissions, but foreground service types require matching permissions declared in manifest.
+- Health Connect permissions: new fine-grained health data categories.
+- Background location: even stricter review process in Play Console.
+- Notification permission (POST_NOTIFICATIONS): apps targeting API 35 should prompt thoughtfully — users are denial-fatigued.
+
 ## Testing
 - Test all permission states: granted, denied, permanently denied.
 - Test permission revocation during app usage (Settings > Apps > Permissions).

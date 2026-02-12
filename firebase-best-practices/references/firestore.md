@@ -34,3 +34,17 @@
 - Avoid reading entire collections — always filter and limit.
 - Use field masks (get with FieldPath) to read only needed fields.
 - Monitor Firestore usage in Firebase Console — watch for unexpected reads.
+
+## Aggregation Queries
+- Count queries: `collection.count()` — returns document count without reading all documents.
+- Sum queries: `collection.aggregate(AggregateField.sum("field"))` — server-side sum.
+- Average queries: `collection.aggregate(AggregateField.average("field"))` — server-side average.
+- Aggregations are billed at 1 read per query — much cheaper than reading all documents.
+- Use for dashboards, analytics, and counters instead of client-side aggregation.
+
+## Firestore Bundles
+- Pre-package query results as static bundles for CDN distribution.
+- Bundles load into local cache — instant reads without network round-trip.
+- Use for: common queries, onboarding data, rarely-changing reference data.
+- Generate bundles server-side with Firebase Admin SDK.
+- Load with `loadBundle(bundleStream)` on the client.

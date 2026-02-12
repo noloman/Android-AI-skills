@@ -34,3 +34,12 @@
 - Test paywall on multiple screen sizes and locales.
 - Use A/B testing to optimize conversion rates.
 - Respect user dismissal — don't show paywall again immediately.
+
+## Customer Center
+- RevenueCat Customer Center provides pre-built subscription management UI.
+- Includes: current subscription status, plan details, cancel/manage links, restore purchases.
+- Reduces support tickets — users can self-serve subscription management.
+- Configure in RevenueCat dashboard: customize appearance and available actions.
+- Integration: `CustomerCenter(CustomerCenterOptions.Builder().build())` composable.
+- Shows: active subscriptions, billing dates, management actions (cancel, change plan).
+- Fallback: deep links to Google Play subscription management for unsupported actions.

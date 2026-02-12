@@ -32,3 +32,17 @@
 - Override values in debug builds for development.
 - Test default values (no fetch), stale values (expired cache), and fresh values.
 - Verify app behavior when Remote Config is unavailable (offline, rate-limited).
+
+## Real-Time Remote Config
+- Enable real-time updates: `addOnConfigUpdateListener` for instant config changes.
+- Eliminates the need to wait for `fetch()` intervals — pushes changes immediately.
+- Use for: kill switches, emergency feature toggles, live A/B test adjustments.
+- Still falls back to fetch-and-activate for initial load and offline scenarios.
+- Real-time listener fires `onUpdate` — call `activate()` to apply changes.
+
+## Personalization
+- Firebase Remote Config Personalization uses ML to optimize parameter values per user.
+- Set up a goal metric (e.g., engagement, revenue) and Firebase auto-tunes values.
+- Requires Google Analytics integration for the optimization signal.
+- Best for: onboarding flows, content ordering, feature exposure.
+- Monitor personalization performance in Firebase Console.

@@ -32,3 +32,11 @@
 - Use waitForIdle() or waitUntil {} for async content.
 - Avoid testing internal state — assert on visible behavior only.
 - Prefer testTag over text for stable selectors in multi-locale apps.
+
+## Espresso-Compose Interop (Hybrid Apps)
+- For apps mixing View-based UI and Compose, use `createAndroidComposeRule<Activity>()`.
+- Access Espresso from Compose tests: regular Espresso `onView()` calls work alongside `onNode()`.
+- Access Compose from Espresso tests: use `composeTestRule.onNodeWithText()` within Espresso test class.
+- Synchronization: Compose idle is separate from Espresso idle — both must be idle for assertions.
+- `composeTestRule.waitForIdle()` waits for Compose recomposition; Espresso's `onView` waits for View idle.
+- For mixed screens: assert View parts with Espresso, Compose parts with ComposeTestRule.
