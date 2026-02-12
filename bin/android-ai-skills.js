@@ -12,6 +12,26 @@ const ALL_SKILLS = [
   "kmp-architecture-best-practices",
   "compose-multiplatform-best-practices",
   "kotlin-coroutines-best-practices",
+  "android-security-best-practices",
+  "android-performance-best-practices",
+  "play-store-readiness",
+  "android-testing-best-practices",
+  "android-accessibility-best-practices",
+  "android-build-infra",
+  "android-background-work",
+  "android-navigation-best-practices",
+];
+
+const CROSS_CUTTING_SKILLS = [
+  "kotlin-coroutines-best-practices",
+  "android-security-best-practices",
+  "android-performance-best-practices",
+  "play-store-readiness",
+  "android-testing-best-practices",
+  "android-accessibility-best-practices",
+  "android-build-infra",
+  "android-background-work",
+  "android-navigation-best-practices",
 ];
 
 // ── Tool registry for project-level init ──────────────────────────────
@@ -78,7 +98,17 @@ If the project is Android-only:
 
 - Use **compose-best-practices**
 
-**Always activate:** **kotlin-coroutines-best-practices** (cross-cutting concern — applies to all project types).
+**Always activate** (cross-cutting concerns — apply to all project types):
+
+- **kotlin-coroutines-best-practices**
+- **android-security-best-practices**
+- **android-performance-best-practices**
+- **play-store-readiness**
+- **android-testing-best-practices**
+- **android-accessibility-best-practices**
+- **android-build-infra**
+- **android-background-work**
+- **android-navigation-best-practices**
 
 ## Enterprise Mode auto-detection (optional)
 
@@ -231,6 +261,7 @@ function resolveSkills(args) {
     if (args["android-only"]) selected.add("compose-best-practices");
     if (args["kmp-only"]) selected.add("kmp-architecture-best-practices");
     if (args["compose-mp-only"]) selected.add("compose-multiplatform-best-practices");
+    for (const s of CROSS_CUTTING_SKILLS) selected.add(s);
     return [...selected];
   }
   return [...ALL_SKILLS];

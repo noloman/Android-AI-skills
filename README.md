@@ -47,6 +47,14 @@ These AI skills:
 - Prevent architecture drift
 - Protect performance budgets
 - Keep KMP boundaries clean
+- Harden **security** (secrets, storage, network, components)
+- Ensure **Play Store compliance** (Data Safety, permissions, target SDK)
+- Enforce **accessibility** (WCAG AA contrast, touch targets, TalkBack)
+- Optimize **performance** (startup, memory, battery, app size)
+- Maintain **test quality** (test pyramid, Compose testing, screenshot tests)
+- Standardize **build infrastructure** (version catalogs, convention plugins, modularization)
+- Govern **background work** (WorkManager, foreground services, notifications)
+- Guide **navigation** (type-safe routes, deep links, App Links)
 - Scale from indie to enterprise
 - Adapt automatically (Enterprise Mode auto-detection)
 
@@ -76,6 +84,46 @@ flowchart LR
     D --- L
     E --- L
     L --> M[Structured Concurrency & Flow]
+
+    N[android-security-best-practices]
+    C --- N
+    D --- N
+    E --- N
+
+    O[android-performance-best-practices]
+    C --- O
+    D --- O
+    E --- O
+
+    P[play-store-readiness]
+    C --- P
+    D --- P
+    E --- P
+
+    Q[android-testing-best-practices]
+    C --- Q
+    D --- Q
+    E --- Q
+
+    R[android-accessibility-best-practices]
+    C --- R
+    D --- R
+    E --- R
+
+    S[android-build-infra]
+    C --- S
+    D --- S
+    E --- S
+
+    T[android-background-work]
+    C --- T
+    D --- T
+    E --- T
+
+    U[android-navigation-best-practices]
+    C --- U
+    D --- U
+    E --- U
 ```
 
 ---
@@ -136,6 +184,123 @@ Cross-cutting skill that always activates alongside the project-type-specific sk
 - Dispatcher injection — no hardcoded Dispatchers.Main in shared code
 - StateFlow for UI state, SharedFlow for events
 - Test coroutines with TestDispatcher + runTest
+
+---
+
+### 5. android-security-best-practices
+
+Cross-cutting skill — secrets management, secure storage, network security, component hardening.
+
+**Enforces:**
+- No hardcoded secrets in source code
+- EncryptedSharedPreferences / Android Keystore for sensitive data
+- HTTPS enforcement with Network Security Config
+- exported="false" by default on all components
+- PendingIntent.FLAG_IMMUTABLE, WebView file access disabled
+- R8 enabled for release builds
+- No sensitive data in logs
+
+---
+
+### 6. android-performance-best-practices
+
+Cross-cutting skill — startup optimization, memory management, battery, app size.
+
+**Enforces:**
+- TTID < 2s, TTFD < 4s
+- No heavy init on main thread during onCreate()
+- App Startup library, Baseline Profiles
+- No static Activity/Context references
+- StrictMode in debug builds
+- R8 + resource shrinking for release
+- WebP assets, Doze-aware networking
+
+---
+
+### 7. play-store-readiness
+
+Cross-cutting skill — Data Safety, permissions, target SDK, signing, release process.
+
+**Enforces:**
+- Data Safety section matches actual SDK behavior
+- Runtime permissions at point of use with rationale
+- Annual target SDK compliance
+- Play App Signing with separate upload key
+- AAB format, staged rollout (5-10%)
+- Crash-free rate target >= 99%
+- No debuggable release builds
+
+---
+
+### 8. android-testing-best-practices
+
+Cross-cutting skill — Compose UI testing, screenshot tests, Room migrations, CI strategy.
+
+**Enforces:**
+- Test pyramid (unit > integration > E2E)
+- Compose testing APIs for Compose UI (not Espresso)
+- Fakes over mocks
+- Room schema export + migration tests
+- Descriptive test names, no Thread.sleep()
+- Deterministic tests, flaky test quarantine
+- TestDispatcher + runTest for coroutines
+
+---
+
+### 9. android-accessibility-best-practices
+
+Cross-cutting skill — content descriptions, TalkBack, touch targets, contrast, semantics.
+
+**Enforces:**
+- contentDescription on all interactive non-text elements
+- 48dp minimum touch targets
+- WCAG AA contrast (4.5:1 normal, 3:1 large text)
+- No color-only information
+- Logical TalkBack reading order
+- Correct semantics on custom composables
+- sp (not dp) for text sizes
+
+---
+
+### 10. android-build-infra
+
+Cross-cutting skill — version catalogs, convention plugins, modularization, build variants.
+
+**Enforces:**
+- Gradle version catalogs (libs.versions.toml) for all dependencies
+- Convention plugins for shared build config
+- Feature modularization (feature-api/feature-impl)
+- Dependencies flow inward, no feature-to-feature deps
+- implementation scope by default
+- Build variants for debug/release/staging
+
+---
+
+### 11. android-background-work
+
+Cross-cutting skill — WorkManager, foreground services, notifications, scheduling.
+
+**Enforces:**
+- WorkManager for deferrable persistent work
+- Foreground service types declared (API 34+)
+- Notification channels (API 26+)
+- Never hold WakeLocks indefinitely
+- Exact alarms only for user-visible scheduling
+- POST_NOTIFICATIONS permission (API 33+)
+
+---
+
+### 12. android-navigation-best-practices
+
+Cross-cutting skill — type-safe routes, deep links, App Links, navigation patterns.
+
+**Enforces:**
+- Type-safe navigation (data class/object routes)
+- App Links verified with Digital Asset Links
+- Deep link fallbacks for non-installed users
+- No heavy logic in navigation callbacks
+- Standard launch mode with Navigation
+- Deep link parameter validation
 
 ---
 
@@ -249,27 +414,59 @@ npx android-ai-skills@latest init --force
 Running `init` with defaults creates:
 
 ```
-AGENTS.md                                    # Codex
-CLAUDE.md                                    # Claude Code
-.github/copilot-instructions.md              # GitHub Copilot
-.cursor/rules/compose-best-practices.mdc     # Cursor (per skill)
+AGENTS.md                                            # Codex
+CLAUDE.md                                            # Claude Code
+.github/copilot-instructions.md                      # GitHub Copilot
+.cursor/rules/compose-best-practices.mdc             # Cursor (per skill)
 .cursor/rules/kmp-architecture-best-practices.mdc
 .cursor/rules/compose-multiplatform-best-practices.mdc
 .cursor/rules/kotlin-coroutines-best-practices.mdc
-.windsurfrules                               # Windsurf
-.clinerules/compose-best-practices.md        # Cline (per skill)
+.cursor/rules/android-security-best-practices.mdc
+.cursor/rules/android-performance-best-practices.mdc
+.cursor/rules/play-store-readiness.mdc
+.cursor/rules/android-testing-best-practices.mdc
+.cursor/rules/android-accessibility-best-practices.mdc
+.cursor/rules/android-build-infra.mdc
+.cursor/rules/android-background-work.mdc
+.cursor/rules/android-navigation-best-practices.mdc
+.windsurfrules                                       # Windsurf
+.clinerules/compose-best-practices.md                # Cline (per skill)
 .clinerules/kmp-architecture-best-practices.md
 .clinerules/compose-multiplatform-best-practices.md
 .clinerules/kotlin-coroutines-best-practices.md
-.aiassistant/rules/compose-best-practices.md # JetBrains AI (per skill)
+.clinerules/android-security-best-practices.md
+.clinerules/android-performance-best-practices.md
+.clinerules/play-store-readiness.md
+.clinerules/android-testing-best-practices.md
+.clinerules/android-accessibility-best-practices.md
+.clinerules/android-build-infra.md
+.clinerules/android-background-work.md
+.clinerules/android-navigation-best-practices.md
+.aiassistant/rules/compose-best-practices.md         # JetBrains AI (per skill)
 .aiassistant/rules/kmp-architecture-best-practices.md
 .aiassistant/rules/compose-multiplatform-best-practices.md
 .aiassistant/rules/kotlin-coroutines-best-practices.md
-.amazonq/rules/compose-best-practices.md     # Amazon Q (per skill)
+.aiassistant/rules/android-security-best-practices.md
+.aiassistant/rules/android-performance-best-practices.md
+.aiassistant/rules/play-store-readiness.md
+.aiassistant/rules/android-testing-best-practices.md
+.aiassistant/rules/android-accessibility-best-practices.md
+.aiassistant/rules/android-build-infra.md
+.aiassistant/rules/android-background-work.md
+.aiassistant/rules/android-navigation-best-practices.md
+.amazonq/rules/compose-best-practices.md             # Amazon Q (per skill)
 .amazonq/rules/kmp-architecture-best-practices.md
 .amazonq/rules/compose-multiplatform-best-practices.md
 .amazonq/rules/kotlin-coroutines-best-practices.md
-CONVENTIONS.md                               # Aider
+.amazonq/rules/android-security-best-practices.md
+.amazonq/rules/android-performance-best-practices.md
+.amazonq/rules/play-store-readiness.md
+.amazonq/rules/android-testing-best-practices.md
+.amazonq/rules/android-accessibility-best-practices.md
+.amazonq/rules/android-build-infra.md
+.amazonq/rules/android-background-work.md
+.amazonq/rules/android-navigation-best-practices.md
+CONVENTIONS.md                                       # Aider
 .aider.conf.yml
 ```
 
@@ -342,6 +539,14 @@ compose-best-practices/
 kmp-architecture-best-practices/
 compose-multiplatform-best-practices/
 kotlin-coroutines-best-practices/
+android-security-best-practices/
+android-performance-best-practices/
+play-store-readiness/
+android-testing-best-practices/
+android-accessibility-best-practices/
+android-build-infra/
+android-background-work/
+android-navigation-best-practices/
 README.md
 ```
 
