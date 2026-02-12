@@ -1,6 +1,6 @@
 {
   "name": "android-ai-skills",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "AI governance skills for Android, Kotlin Multiplatform (KMP), and Compose Multiplatform (Claude + Codex).",
   "license": "MIT",
   "type": "module",
