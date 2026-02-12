@@ -65,6 +65,7 @@ These AI skills:
 - Automate **CI/CD** (GitHub Actions, Fastlane, signing, Play Store deployment)
 - Guide **maps & location** (FusedLocationProvider, geofencing, permissions)
 - Enable **on-device ML** (ML Kit, TFLite, Gemini Nano, model management)
+- Simplify **RevenueCat** subscriptions (entitlements, offerings, paywalls, testing)
 - Scale from indie to enterprise
 - Adapt automatically (Enterprise Mode auto-detection)
 
@@ -184,6 +185,11 @@ flowchart LR
     C --- AE
     D --- AE
     E --- AE
+
+    AF[revenuecat-best-practices]
+    C --- AF
+    D --- AF
+    E --- AF
 ```
 
 ---
@@ -504,6 +510,20 @@ Cross-cutting skill — ML Kit, TensorFlow Lite, Gemini Nano, model management.
 
 ---
 
+### 23. revenuecat-best-practices
+
+Cross-cutting skill — RevenueCat subscriptions, entitlements, offerings, paywalls, testing.
+
+**Enforces:**
+- Single Purchases.configure() in Application.onCreate()
+- Entitlements for feature gating (not product IDs)
+- Offerings for remote product configuration
+- Proper user identity with logIn/logOut
+- Fresh CustomerInfo checks (no manual caching)
+- Sandbox testing on real devices
+
+---
+
 ## Enterprise Mode (Auto-Detection)
 
 Enterprise Mode activates automatically if the repository contains:
@@ -639,6 +659,7 @@ CLAUDE.md                                            # Claude Code
 .cursor/rules/android-ci-cd.mdc
 .cursor/rules/android-maps-location.mdc
 .cursor/rules/android-ml-ondevice.mdc
+.cursor/rules/revenuecat-best-practices.mdc
 .windsurfrules                                       # Windsurf
 .clinerules/compose-best-practices.md                # Cline (per skill)
 .clinerules/kmp-architecture-best-practices.md
@@ -662,6 +683,7 @@ CLAUDE.md                                            # Claude Code
 .clinerules/android-ci-cd.md
 .clinerules/android-maps-location.md
 .clinerules/android-ml-ondevice.md
+.clinerules/revenuecat-best-practices.md
 .aiassistant/rules/compose-best-practices.md         # JetBrains AI (per skill)
 .aiassistant/rules/kmp-architecture-best-practices.md
 .aiassistant/rules/compose-multiplatform-best-practices.md
@@ -684,6 +706,7 @@ CLAUDE.md                                            # Claude Code
 .aiassistant/rules/android-ci-cd.md
 .aiassistant/rules/android-maps-location.md
 .aiassistant/rules/android-ml-ondevice.md
+.aiassistant/rules/revenuecat-best-practices.md
 .amazonq/rules/compose-best-practices.md             # Amazon Q (per skill)
 .amazonq/rules/kmp-architecture-best-practices.md
 .amazonq/rules/compose-multiplatform-best-practices.md
@@ -706,6 +729,7 @@ CLAUDE.md                                            # Claude Code
 .amazonq/rules/android-ci-cd.md
 .amazonq/rules/android-maps-location.md
 .amazonq/rules/android-ml-ondevice.md
+.amazonq/rules/revenuecat-best-practices.md
 CONVENTIONS.md                                       # Aider
 .aider.conf.yml
 ```
@@ -797,6 +821,7 @@ android-media/
 android-ci-cd/
 android-maps-location/
 android-ml-ondevice/
+revenuecat-best-practices/
 README.md
 ```
 

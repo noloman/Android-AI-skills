@@ -30,6 +30,7 @@ const ALL_SKILLS = [
   "android-ci-cd",
   "android-maps-location",
   "android-ml-ondevice",
+  "revenuecat-best-practices",
 ];
 
 const CROSS_CUTTING_SKILLS = [
@@ -52,6 +53,7 @@ const CROSS_CUTTING_SKILLS = [
   "android-ci-cd",
   "android-maps-location",
   "android-ml-ondevice",
+  "revenuecat-best-practices",
 ];
 
 // ── Tool registry for project-level init ──────────────────────────────
@@ -139,6 +141,7 @@ If the project is Android-only:
 - **android-ci-cd**
 - **android-maps-location**
 - **android-ml-ondevice**
+- **revenuecat-best-practices**
 
 ## Enterprise Mode auto-detection (optional)
 
