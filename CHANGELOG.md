@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/noloman/Android-AI-skills/compare/v1.0.0...v1.1.0) (2026-02-12)
+
+
+### Features
+
+* add universal AI coding assistant support (9 tools) ([44bd7b5](https://github.com/noloman/Android-AI-skills/commit/44bd7b51dc5ce081bf6d3f37673093aa5caae1d8))
+
 # 1.0.0 (2026-02-12)
 
 
