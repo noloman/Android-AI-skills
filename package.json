@@ -1,7 +1,7 @@
 {
   "name": "android-ai-skills",
   "version": "1.0.0",
-  "description": "AI governance skills for Android, Kotlin Multiplatform (KMP), and Compose Multiplatform (Claude + Codex).",
+  "description": "AI governance skills for Android, KMP & Compose — works with Codex, Claude, Copilot, Cursor, Windsurf, Cline, JetBrains AI, Amazon Q & Aider.",
   "license": "MIT",
   "type": "module",
   "bin": {

@@ -2,17 +2,42 @@
 [![npm](https://img.shields.io/npm/v/android-ai-skills.svg)](https://www.npmjs.com/package/android-ai-skills)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-# 🚀 Android AI Architecture Skills
+# Android AI Architecture Skills
 
 Opinionated, production-grade AI skills for Android, Kotlin Multiplatform (KMP),
 and Compose Multiplatform projects.
 
-This repository provides structured **AI governance layers** that enforce
-architecture, performance, and scalability best practices automatically.
+Works with **Codex, Claude Code, GitHub Copilot, Cursor, Windsurf, Cline,
+JetBrains AI, Amazon Q & Aider**.
 
 ---
 
-# 🎯 Why This Exists
+## Supported AI Tools
+
+### Global install (home directory)
+
+| Tool | Path | Format |
+|------|------|--------|
+| Codex | `~/.codex/skills/<name>/SKILL.md` | Directory copy |
+| Claude Code | `~/.claude/rules/<name>.md` | Flattened markdown |
+
+### Project-level (`init` command)
+
+| Tool | Path | Format |
+|------|------|--------|
+| Codex | `AGENTS.md` | Single markdown file |
+| Claude Code | `CLAUDE.md` | Single markdown file |
+| GitHub Copilot | `.github/copilot-instructions.md` | Single markdown file |
+| Cursor | `.cursor/rules/<name>.mdc` | MDC per skill |
+| Windsurf | `.windsurfrules` | Single markdown file |
+| Cline | `.clinerules/<name>.md` | Markdown per skill |
+| JetBrains AI | `.aiassistant/rules/<name>.md` | Markdown per skill |
+| Amazon Q | `.amazonq/rules/<name>.md` | Markdown per skill |
+| Aider | `CONVENTIONS.md` + `.aider.conf.yml` | Single markdown + YAML |
+
+---
+
+## Why This Exists
 
 Modern Android & KMP projects grow complex quickly.
 
@@ -27,7 +52,7 @@ These AI skills:
 
 ---
 
-# 🧠 Skill Ecosystem
+## Skill Ecosystem
 
 ```mermaid
 flowchart LR
@@ -49,15 +74,14 @@ flowchart LR
 
 ---
 
-# 📦 Included Skills
+## Included Skills
 
-## 1️⃣ compose-best-practices
+### 1. compose-best-practices
 
 For Android-only Jetpack Compose apps.
 
-### Enforces
-
-- Material3-only (🚫 no M2 mixing)
+**Enforces:**
+- Material3-only (no M2 mixing)
 - Stateless composables + UDF
 - StateFlow + SharedFlow patterns
 - Lifecycle-aware collection
@@ -67,12 +91,11 @@ For Android-only Jetpack Compose apps.
 
 ---
 
-## 2️⃣ kmp-architecture-best-practices
+### 2. kmp-architecture-best-practices
 
 For shared business logic in Kotlin Multiplatform.
 
-### Enforces
-
+**Enforces:**
 - No Android leakage into commonMain
 - No java.time in shared code
 - Proper expect/actual boundaries
@@ -82,12 +105,11 @@ For shared business logic in Kotlin Multiplatform.
 
 ---
 
-## 3️⃣ compose-multiplatform-best-practices
+### 3. compose-multiplatform-best-practices
 
 For shared UI in commonMain using Compose Multiplatform.
 
-### Enforces
-
+**Enforces:**
 - No Android ViewModel in shared UI
 - Platform-owned navigation
 - Shared state holder model
@@ -96,7 +118,7 @@ For shared UI in commonMain using Compose Multiplatform.
 
 ---
 
-# 🔥 Enterprise Mode (Auto-Detection)
+## Enterprise Mode (Auto-Detection)
 
 Enterprise Mode activates automatically if the repository contains:
 
@@ -130,7 +152,113 @@ flowchart TD
 
 ---
 
-# ⚡ Performance Governance
+## Install via npx
+
+### Global install (default: Codex + Claude Code)
+
+```bash
+npx android-ai-skills@latest
+```
+
+### Install only one skill
+
+```bash
+npx android-ai-skills@latest --android-only
+npx android-ai-skills@latest --kmp-only
+npx android-ai-skills@latest --compose-mp-only
+```
+
+### Install only for one target
+
+```bash
+npx android-ai-skills@latest --target codex
+npx android-ai-skills@latest --target claude
+```
+
+### Dry run
+
+```bash
+npx android-ai-skills@latest --dry-run
+```
+
+### Uninstall
+
+```bash
+npx android-ai-skills@latest uninstall
+npx android-ai-skills@latest uninstall --target codex
+```
+
+---
+
+## Project-level init (all 9 tools)
+
+Generate project-level instruction files for all supported AI tools:
+
+```bash
+npx android-ai-skills@latest init
+```
+
+### Select specific tools
+
+```bash
+npx android-ai-skills@latest init --tools cursor,copilot
+npx android-ai-skills@latest init --tools claude,codex
+```
+
+### Exclude tools
+
+```bash
+npx android-ai-skills@latest init --exclude aider
+```
+
+### Smaller output (skip reference docs)
+
+```bash
+npx android-ai-skills@latest init --no-references
+```
+
+### Overwrite existing files
+
+```bash
+npx android-ai-skills@latest init --force
+```
+
+### Generated files
+
+Running `init` with defaults creates:
+
+```
+AGENTS.md                                    # Codex
+CLAUDE.md                                    # Claude Code
+.github/copilot-instructions.md              # GitHub Copilot
+.cursor/rules/compose-best-practices.mdc     # Cursor (per skill)
+.cursor/rules/kmp-architecture-best-practices.mdc
+.cursor/rules/compose-multiplatform-best-practices.mdc
+.windsurfrules                               # Windsurf
+.clinerules/compose-best-practices.md        # Cline (per skill)
+.clinerules/kmp-architecture-best-practices.md
+.clinerules/compose-multiplatform-best-practices.md
+.aiassistant/rules/compose-best-practices.md # JetBrains AI (per skill)
+.aiassistant/rules/kmp-architecture-best-practices.md
+.aiassistant/rules/compose-multiplatform-best-practices.md
+.amazonq/rules/compose-best-practices.md     # Amazon Q (per skill)
+.amazonq/rules/kmp-architecture-best-practices.md
+.amazonq/rules/compose-multiplatform-best-practices.md
+CONVENTIONS.md                               # Aider
+.aider.conf.yml
+```
+
+---
+
+## Print resolved paths
+
+```bash
+npx android-ai-skills@latest print-paths
+```
+
+---
+
+## Performance Governance
 
 Performance is treated as a first-class citizen.
 
@@ -144,7 +272,7 @@ Performance is treated as a first-class citizen.
 
 ---
 
-# 🏗 Architecture Governance
+## Architecture Governance
 
 ```mermaid
 flowchart TB
@@ -168,7 +296,7 @@ Principles:
 
 ---
 
-# 🧪 Stability & Compose Compiler Alignment
+## Stability & Compose Compiler Alignment
 
 The skills encourage:
 
@@ -182,7 +310,7 @@ This ensures Compose can skip recomposition effectively.
 
 ---
 
-# 📂 Repository Structure
+## Repository Structure
 
 ```
 compose-best-practices/
@@ -193,101 +321,6 @@ README.md
 
 ---
 
-# 📖 How To Use
+## License
 
-1. Place the skills inside:
-   - ~/.codex/skills/
-   - ~/.claude/skills/
-   - or project-level .codex/skills/
-
-2. Add AGENTS.md to your project root (optional but recommended).
-
-3. The correct skill activates automatically based on project structure.
-
----
-
-# 🎉 Result
-
-You now have:
-
-- Predictable AI code reviews
-- Performance-aware AI refactors
-- Architecture enforcement across Android + KMP
-- Enterprise-ready governance without overengineering
-
----
-
-# 🛡 License
-
-MIT – Use freely in personal, startup, or enterprise projects.
----
-
-# 🧰 Install via npx
-
-You can install the skills globally into the standard locations for **Codex** and **Claude**:
-
-- `~/.codex/skills/`
-- `~/.claude/skills/`
-
-## Install (default: both)
-
-```bash
-npx android-ai-skills@latest
-```
-
-## Install only one skill
-
-```bash
-npx android-ai-skills@latest --android-only
-npx android-ai-skills@latest --kmp-only
-npx android-ai-skills@latest --compose-mp-only
-```
-
-## Install only for one target
-
-```bash
-npx android-ai-skills@latest --target codex
-npx android-ai-skills@latest --target claude
-```
-
-## Dry run
-
-```bash
-npx android-ai-skills@latest --dry-run
-```
-
-## Uninstall
-
-```bash
-npx android-ai-skills@latest uninstall
-npx android-ai-skills@latest uninstall --target codex
-```
-
----
-
-# 🧾 Auto-detect Enterprise Mode (Tooling-aware)
-
-Enterprise Mode activates automatically **only if tooling is detected** in the project root:
-
-- `detekt.yml` / `detekt.yaml`
-- `lint.xml`
-- ktlint config
-- spotless config
-
-If tooling is not detected, the skills remain tool-agnostic and **do not** enforce lint/detekt specifics.
-
-### Generate an AGENTS.md in your repo
-
-```bash
-npx android-ai-skills@latest init
-# or write it somewhere else:
-npx android-ai-skills@latest init --path .
-```
-
-### Print where skills will be installed
-
-```bash
-npx android-ai-skills@latest print-paths
-# or include paths during install:
-npx android-ai-skills@latest --print-paths
-```
+MIT -- Use freely in personal, startup, or enterprise projects.
