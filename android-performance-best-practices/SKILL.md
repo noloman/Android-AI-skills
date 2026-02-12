@@ -2,6 +2,7 @@
 ---
 name: android-performance-best-practices
 description: Android performance best practices — startup, memory, battery, app size, Baseline Profiles.
+user-invocable: true
 ---
 
 # Android Performance Best Practices

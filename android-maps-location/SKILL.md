@@ -2,6 +2,7 @@
 ---
 name: android-maps-location
 description: Maps & location — Google Maps SDK, FusedLocationProvider, geofencing, permissions.
+user-invocable: true
 ---
 
 # Android Maps & Location

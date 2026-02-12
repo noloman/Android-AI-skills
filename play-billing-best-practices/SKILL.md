@@ -2,6 +2,7 @@
 ---
 name: play-billing-best-practices
 description: Play Billing — in-app purchases, subscriptions, server verification, testing.
+user-invocable: true
 ---
 
 # Play Billing Best Practices

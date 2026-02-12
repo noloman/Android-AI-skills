@@ -2,6 +2,7 @@
 ---
 name: android-ml-ondevice
 description: On-device ML — ML Kit, TensorFlow Lite, Gemini Nano, model management.
+user-invocable: true
 ---
 
 # Android On-Device ML

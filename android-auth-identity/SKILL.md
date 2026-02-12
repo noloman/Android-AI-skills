@@ -2,6 +2,7 @@
 ---
 name: android-auth-identity
 description: Authentication & identity — Credential Manager, biometrics, token management, session security.
+user-invocable: true
 ---
 
 # Android Authentication & Identity

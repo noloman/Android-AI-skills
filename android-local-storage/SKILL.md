@@ -2,6 +2,7 @@
 ---
 name: android-local-storage
 description: Local storage — Room, DataStore, offline-first architecture, caching, encryption.
+user-invocable: true
 ---
 
 # Android Local Storage

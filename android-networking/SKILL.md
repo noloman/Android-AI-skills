@@ -2,6 +2,7 @@
 ---
 name: android-networking
 description: Android networking — Retrofit, OkHttp, Ktor, caching, error handling, resilience.
+user-invocable: true
 ---
 
 # Android Networking

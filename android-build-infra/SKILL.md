@@ -2,6 +2,7 @@
 ---
 name: android-build-infra
 description: Android build infrastructure — version catalogs, convention plugins, modularization, variants.
+user-invocable: true
 ---
 
 # Android Build Infrastructure

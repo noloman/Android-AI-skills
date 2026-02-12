@@ -60,7 +60,7 @@ const CROSS_CUTTING_SKILLS = [
 
 const INIT_TOOLS = {
   codex:     { file: "AGENTS.md",                                  type: "single" },
-  claude:    { file: "CLAUDE.md",                                  type: "single" },
+  claude:    { dir: ".claude/skills",                               type: "per-skill-dir" },
   copilot:   { dir: ".github", file: "copilot-instructions.md",   type: "single" },
   cursor:    { dir: ".cursor/rules",                               type: "per-skill", ext: ".mdc" },
   windsurf:  { file: ".windsurfrules",                             type: "single" },
@@ -173,10 +173,6 @@ alwaysApply: false
 ---
 
 ${body}`;
-}
-
-function flattenSkillForClaude(skill) {
-  return generateMarkdown(skill, { includeRefs: true });
 }
 
 function generateSingleFile(skills, { includeRefs = true } = {}) {
@@ -318,20 +314,20 @@ function resolveGlobalTargets(args) {
     targets.push({ type: "codex", base: path.join(home, ".codex", "skills") });
   }
   if (target === "all" || target === "claude") {
-    targets.push({ type: "claude", base: path.join(home, ".claude", "rules") });
+    targets.push({ type: "claude", base: path.join(home, ".claude", "skills") });
   }
   if (!targets.length) throw new Error(`Unknown --target ${args.target}. Use all|codex|claude.`);
   return targets;
 }
 
 function checkClaudeMigration(skills) {
-  const oldBase = path.join(os.homedir(), ".claude", "skills");
+  const oldBase = path.join(os.homedir(), ".claude", "rules");
   if (!fs.existsSync(oldBase)) return;
-  const found = skills.filter(s => fs.existsSync(path.join(oldBase, s)));
+  const found = skills.filter(s => fs.existsSync(path.join(oldBase, s + ".md")));
   if (found.length) {
-    console.log(`⚠️  Found old Claude skills in ~/.claude/skills/`);
-    console.log(`   Claude Code reads from ~/.claude/rules/ instead.`);
-    console.log(`   You can remove the old directory: rm -rf ~/.claude/skills/`);
+    console.log(`⚠️  Found old Claude rules in ~/.claude/rules/`);
+    console.log(`   Skills now install to ~/.claude/skills/ as on-demand skills.`);
+    console.log(`   You can remove old rules: rm ~/.claude/rules/{${found.join(",")}}.md`);
     console.log("");
   }
 }
@@ -343,11 +339,7 @@ function printResolvedPaths(args) {
   for (const t of targets) {
     console.log(`- ${t.base} (${t.type})`);
     for (const s of skills) {
-      if (t.type === "claude") {
-        console.log(`  - ${path.join(t.base, s + ".md")}`);
-      } else {
-        console.log(`  - ${path.join(t.base, s)}/`);
-      }
+      console.log(`  - ${path.join(t.base, s)}/`);
     }
   }
 }
@@ -406,8 +398,26 @@ function writeProjectFiles(outDir, skills, tools, { dryRun, force, includeRefs }
           console.log(`⏭️  Skipped ${path.relative(outDir, extraPath)} (exists)`);
         }
       }
+    } else if (cfg.type === "per-skill-dir") {
+      // per-skill directory copy (Claude Code on-demand skills)
+      const dir = path.join(outDir, cfg.dir);
+      for (const skill of skillContents) {
+        const destDir = path.join(dir, skill.name);
+
+        if (fs.existsSync(destDir) && !force) {
+          console.log(`⏭️  Skipped ${path.relative(outDir, destDir)}/ (exists, use --force)`);
+          continue;
+        }
+
+        const srcDir = path.join(projectRoot, skill.name);
+        if (!dryRun) {
+          copyDir(srcDir, destDir, { dryRun, force: true });
+        }
+        console.log(`${dryRun ? "🧪" : "✅"} ${toolName} → ${path.relative(outDir, destDir)}/`);
+        written.push(destDir);
+      }
     } else {
-      // per-skill
+      // per-skill file
       const dir = path.join(outDir, cfg.dir);
       for (const skill of skillContents) {
         const fileName = skill.name + cfg.ext;
@@ -505,20 +515,14 @@ function main() {
       }
     } else if (target.type === "claude") {
       for (const skill of skills) {
-        const dest = path.join(target.base, skill + ".md");
+        const src = path.join(projectRoot, skill);
+        const dest = path.join(target.base, skill);
         if (uninstall) {
           console.log(`🗑️  ${skill} → ${dest}`);
-          removeFile(dest, { dryRun });
+          removeDir(dest, { dryRun });
         } else {
-          if (fs.existsSync(dest) && !force) {
-            throw new Error(`Destination exists: ${dest}. Use --force.`);
-          }
-          const content = flattenSkillForClaude(readSkillContent(skill));
-          if (!dryRun) {
-            ensureDir(target.base, false);
-            fs.writeFileSync(dest, content, "utf8");
-          }
           console.log(`✅ ${skill} → ${dest}`);
+          copyDir(src, dest, { dryRun, force });
         }
       }
     }

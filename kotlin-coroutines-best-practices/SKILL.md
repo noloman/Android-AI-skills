@@ -2,6 +2,7 @@
 ---
 name: kotlin-coroutines-best-practices
 description: Kotlin Coroutines & Flow best practices for Android and KMP projects.
+user-invocable: true
 ---
 
 # Kotlin Coroutines & Flow Best Practices

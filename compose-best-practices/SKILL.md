@@ -2,6 +2,7 @@
 ---
 name: compose-best-practices
 description: Strict Android Compose best practices with optional enterprise enforcement.
+user-invocable: true
 ---
 
 # Compose Best Practices (Material3 Only)

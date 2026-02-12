@@ -2,6 +2,7 @@
 ---
 name: android-navigation-best-practices
 description: Android navigation — type-safe routes, deep links, App Links, navigation patterns.
+user-invocable: true
 ---
 
 # Android Navigation Best Practices

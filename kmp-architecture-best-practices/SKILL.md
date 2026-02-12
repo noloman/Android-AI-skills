@@ -2,6 +2,7 @@
 ---
 name: kmp-architecture-best-practices
 description: Kotlin Multiplatform clean architecture enforcement.
+user-invocable: true
 ---
 
 # KMP Architecture Rules

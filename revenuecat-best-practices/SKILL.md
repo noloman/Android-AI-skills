@@ -2,6 +2,7 @@
 ---
 name: revenuecat-best-practices
 description: RevenueCat — subscriptions, entitlements, offerings, paywalls, testing, migration.
+user-invocable: true
 ---
 
 # RevenueCat Best Practices

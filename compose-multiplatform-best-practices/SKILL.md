@@ -2,6 +2,7 @@
 ---
 name: compose-multiplatform-best-practices
 description: Compose Multiplatform shared UI best practices.
+user-invocable: true
 ---
 
 # Compose Multiplatform Rules

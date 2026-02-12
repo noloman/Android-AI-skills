@@ -2,6 +2,7 @@
 ---
 name: play-store-readiness
 description: Play Store compliance — Data Safety, permissions, target SDK, signing, release process.
+user-invocable: true
 ---
 
 # Play Store Readiness

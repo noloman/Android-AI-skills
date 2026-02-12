@@ -2,6 +2,7 @@
 ---
 name: android-security-best-practices
 description: Android security best practices — secrets, storage, network, components, WebView, R8.
+user-invocable: true
 ---
 
 # Android Security Best Practices

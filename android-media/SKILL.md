@@ -2,6 +2,7 @@
 ---
 name: android-media
 description: Android media — Media3/ExoPlayer, CameraX, image loading, audio focus, PiP.
+user-invocable: true
 ---
 
 # Android Media

@@ -2,6 +2,7 @@
 ---
 name: android-testing-best-practices
 description: Android testing best practices — Compose UI testing, screenshot tests, Room migrations, CI.
+user-invocable: true
 ---
 
 # Android Testing Best Practices

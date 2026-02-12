@@ -2,6 +2,7 @@
 ---
 name: firebase-best-practices
 description: Firebase integration — Auth, Firestore, Crashlytics, Remote Config, FCM, Analytics.
+user-invocable: true
 ---
 
 # Firebase Best Practices

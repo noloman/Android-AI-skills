@@ -2,6 +2,7 @@
 ---
 name: android-background-work
 description: Android background work — WorkManager, foreground services, notifications, scheduling.
+user-invocable: true
 ---
 
 # Android Background Work

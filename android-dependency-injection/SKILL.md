@@ -2,6 +2,7 @@
 ---
 name: android-dependency-injection
 description: Dependency injection with Hilt/Dagger — setup, scoping, multi-module, testing.
+user-invocable: true
 ---
 
 # Android Dependency Injection

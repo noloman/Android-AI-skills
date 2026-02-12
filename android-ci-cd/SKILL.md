@@ -2,6 +2,7 @@
 ---
 name: android-ci-cd
 description: Android CI/CD — GitHub Actions, Fastlane, signing, Play Store deployment, build optimization.
+user-invocable: true
 ---
 
 # Android CI/CD

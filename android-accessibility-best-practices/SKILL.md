@@ -2,6 +2,7 @@
 ---
 name: android-accessibility-best-practices
 description: Android accessibility — content descriptions, TalkBack, touch targets, contrast, Compose semantics.
+user-invocable: true
 ---
 
 # Android Accessibility Best Practices

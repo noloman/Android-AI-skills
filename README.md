@@ -19,14 +19,14 @@ JetBrains AI, Amazon Q & Aider**.
 | Tool | Path | Format |
 |------|------|--------|
 | Codex | `~/.codex/skills/<name>/SKILL.md` | Directory copy |
-| Claude Code | `~/.claude/rules/<name>.md` | Flattened markdown |
+| Claude Code | `~/.claude/skills/<name>/SKILL.md` | Directory copy (on-demand skill) |
 
 ### Project-level (`init` command)
 
 | Tool | Path | Format |
 |------|------|--------|
 | Codex | `AGENTS.md` | Single markdown file |
-| Claude Code | `CLAUDE.md` | Single markdown file |
+| Claude Code | `.claude/skills/<name>/SKILL.md` | Directory per skill (on-demand) |
 | GitHub Copilot | `.github/copilot-instructions.md` | Single markdown file |
 | Cursor | `.cursor/rules/<name>.mdc` | MDC per skill |
 | Windsurf | `.windsurfrules` | Single markdown file |
@@ -635,7 +635,29 @@ Running `init` with defaults creates:
 
 ```
 AGENTS.md                                            # Codex
-CLAUDE.md                                            # Claude Code
+.claude/skills/compose-best-practices/SKILL.md       # Claude Code (per skill, on-demand)
+.claude/skills/kmp-architecture-best-practices/SKILL.md
+.claude/skills/compose-multiplatform-best-practices/SKILL.md
+.claude/skills/kotlin-coroutines-best-practices/SKILL.md
+.claude/skills/android-security-best-practices/SKILL.md
+.claude/skills/android-performance-best-practices/SKILL.md
+.claude/skills/play-store-readiness/SKILL.md
+.claude/skills/android-testing-best-practices/SKILL.md
+.claude/skills/android-accessibility-best-practices/SKILL.md
+.claude/skills/android-build-infra/SKILL.md
+.claude/skills/android-background-work/SKILL.md
+.claude/skills/android-navigation-best-practices/SKILL.md
+.claude/skills/play-billing-best-practices/SKILL.md
+.claude/skills/firebase-best-practices/SKILL.md
+.claude/skills/android-dependency-injection/SKILL.md
+.claude/skills/android-networking/SKILL.md
+.claude/skills/android-local-storage/SKILL.md
+.claude/skills/android-auth-identity/SKILL.md
+.claude/skills/android-media/SKILL.md
+.claude/skills/android-ci-cd/SKILL.md
+.claude/skills/android-maps-location/SKILL.md
+.claude/skills/android-ml-ondevice/SKILL.md
+.claude/skills/revenuecat-best-practices/SKILL.md
 .github/copilot-instructions.md                      # GitHub Copilot
 .cursor/rules/compose-best-practices.mdc             # Cursor (per skill)
 .cursor/rules/kmp-architecture-best-practices.mdc
