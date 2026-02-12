@@ -1,3 +1,11 @@
+# [1.6.0](https://github.com/noloman/Android-AI-skills/compare/v1.5.0...v1.6.0) (2026-02-12)
+
+
+### Features
+
+* link orphan references, clean up legacy files, and expand thin content ([5f96893](https://github.com/noloman/Android-AI-skills/commit/5f968933e293c07847ff44a03f0320b22f1f51ee))
+* switch Claude Code from always-on rules to on-demand skills ([ff20bea](https://github.com/noloman/Android-AI-skills/commit/ff20bead670af25d118bb583819b8111860858ab))
+
 # [1.5.0](https://github.com/noloman/Android-AI-skills/compare/v1.4.0...v1.5.0) (2026-02-12)
 
 
