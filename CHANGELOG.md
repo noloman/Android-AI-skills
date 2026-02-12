@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/noloman/Android-AI-skills/compare/v1.4.0...v1.5.0) (2026-02-12)
+
+
+### Features
+
+* add revenuecat-best-practices skill ([b4d9211](https://github.com/noloman/Android-AI-skills/commit/b4d9211731f0d5e63cf9d334dc22046120a75cbd))
+
 # [1.4.0](https://github.com/noloman/Android-AI-skills/compare/v1.3.0...v1.4.0) (2026-02-12)
 
 
