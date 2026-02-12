@@ -1,4 +1,4 @@
-[![CI](https://img.shields.io/github/actions/workflow/status/OWNER/REPO/release.yml?branch=main)](https://github.com/OWNER/REPO/actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/noloman/android-ai-skills/release.yml?branch=main)](https://github.com/noloman/android-ai-skills/actions)
 [![npm](https://img.shields.io/npm/v/android-ai-skills.svg)](https://www.npmjs.com/package/android-ai-skills)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
