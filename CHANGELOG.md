@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/noloman/Android-AI-skills/compare/v1.2.0...v1.3.0) (2026-02-12)
+
+
+### Features
+
+* add 8 cross-cutting Android platform skills ([821a0d3](https://github.com/noloman/Android-AI-skills/commit/821a0d34bb2f193ea395a990411f2ef0d9c2c23a))
+
 # [1.2.0](https://github.com/noloman/Android-AI-skills/compare/v1.1.0...v1.2.0) (2026-02-12)
 
 
