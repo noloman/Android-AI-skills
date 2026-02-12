@@ -11,6 +11,7 @@ const ALL_SKILLS = [
   "compose-best-practices",
   "kmp-architecture-best-practices",
   "compose-multiplatform-best-practices",
+  "kotlin-coroutines-best-practices",
 ];
 
 // ── Tool registry for project-level init ──────────────────────────────
@@ -76,6 +77,8 @@ If the project contains \`commonMain\` (KMP):
 If the project is Android-only:
 
 - Use **compose-best-practices**
+
+**Always activate:** **kotlin-coroutines-best-practices** (cross-cutting concern — applies to all project types).
 
 ## Enterprise Mode auto-detection (optional)
 

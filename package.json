@@ -12,6 +12,7 @@
     "compose-best-practices/",
     "kmp-architecture-best-practices/",
     "compose-multiplatform-best-practices/",
+    "kotlin-coroutines-best-practices/",
     "README.md",
     "LICENSE",
     "CHANGELOG.md",

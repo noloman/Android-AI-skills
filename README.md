@@ -70,6 +70,12 @@ flowchart LR
 
     E --> J[Shared UI Discipline]
     E --> K[Platform-owned Navigation]
+
+    L[kotlin-coroutines-best-practices]
+    C --- L
+    D --- L
+    E --- L
+    L --> M[Structured Concurrency & Flow]
 ```
 
 ---
@@ -115,6 +121,21 @@ For shared UI in commonMain using Compose Multiplatform.
 - Shared state holder model
 - Multiplatform Material usage
 - Platform adapter pattern
+
+---
+
+### 4. kotlin-coroutines-best-practices
+
+Cross-cutting skill that always activates alongside the project-type-specific skill.
+
+**Enforces:**
+- No GlobalScope — scoped coroutines only
+- Structured concurrency with parent-child job hierarchies
+- Cooperative cancellation (isActive, ensureActive)
+- Never catch CancellationException
+- Dispatcher injection — no hardcoded Dispatchers.Main in shared code
+- StateFlow for UI state, SharedFlow for events
+- Test coroutines with TestDispatcher + runTest
 
 ---
 
@@ -234,16 +255,20 @@ CLAUDE.md                                    # Claude Code
 .cursor/rules/compose-best-practices.mdc     # Cursor (per skill)
 .cursor/rules/kmp-architecture-best-practices.mdc
 .cursor/rules/compose-multiplatform-best-practices.mdc
+.cursor/rules/kotlin-coroutines-best-practices.mdc
 .windsurfrules                               # Windsurf
 .clinerules/compose-best-practices.md        # Cline (per skill)
 .clinerules/kmp-architecture-best-practices.md
 .clinerules/compose-multiplatform-best-practices.md
+.clinerules/kotlin-coroutines-best-practices.md
 .aiassistant/rules/compose-best-practices.md # JetBrains AI (per skill)
 .aiassistant/rules/kmp-architecture-best-practices.md
 .aiassistant/rules/compose-multiplatform-best-practices.md
+.aiassistant/rules/kotlin-coroutines-best-practices.md
 .amazonq/rules/compose-best-practices.md     # Amazon Q (per skill)
 .amazonq/rules/kmp-architecture-best-practices.md
 .amazonq/rules/compose-multiplatform-best-practices.md
+.amazonq/rules/kotlin-coroutines-best-practices.md
 CONVENTIONS.md                               # Aider
 .aider.conf.yml
 ```
@@ -316,6 +341,7 @@ This ensures Compose can skip recomposition effectively.
 compose-best-practices/
 kmp-architecture-best-practices/
 compose-multiplatform-best-practices/
+kotlin-coroutines-best-practices/
 README.md
 ```
 
