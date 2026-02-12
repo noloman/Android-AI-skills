@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/noloman/Android-AI-skills/compare/v1.1.0...v1.2.0) (2026-02-12)
+
+
+### Bug Fixes
+
+* **ci:** fix trusted publishing — upgrade npm and add repository field ([cc93884](https://github.com/noloman/Android-AI-skills/commit/cc938841c51b3c22633e66030d84ddeb3982a744))
+* **ci:** remove registry-url that interferes with OIDC token exchange ([eed08b9](https://github.com/noloman/Android-AI-skills/commit/eed08b9f7f0343d4b3081861df7aa1eb6ea1dd4b))
+* **ci:** switch to npm trusted publishing via OIDC ([f74d8ce](https://github.com/noloman/Android-AI-skills/commit/f74d8ce182ddb1e16439dc1a5e4dbf9aba4a4654))
+
+
+### Features
+
+* add kotlin-coroutines-best-practices skill ([6e002e9](https://github.com/noloman/Android-AI-skills/commit/6e002e917c4b88b77fc749a5abd87ab6300526a7))
+
 # [1.1.0](https://github.com/noloman/Android-AI-skills/compare/v1.0.0...v1.1.0) (2026-02-12)
 
 
