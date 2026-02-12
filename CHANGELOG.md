@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/noloman/Android-AI-skills/compare/v1.3.0...v1.4.0) (2026-02-12)
+
+
+### Features
+
+* add 10 more cross-cutting skills (billing, Firebase, DI, networking, storage, auth, media, CI/CD, maps, ML) ([bb2990e](https://github.com/noloman/Android-AI-skills/commit/bb2990ebd9929d0c725c99c9cfcc94c88593b702))
+
 # [1.3.0](https://github.com/noloman/Android-AI-skills/compare/v1.2.0...v1.3.0) (2026-02-12)
 
 
