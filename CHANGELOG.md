@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/noloman/Android-AI-skills/compare/v1.6.0...v1.7.0) (2026-02-13)
+
+
+### Features
+
+* add OpenCode as 10th supported AI tool target ([b26344d](https://github.com/noloman/Android-AI-skills/commit/b26344dd2d86ed6e892630bf93d03cbbd678791b))
+
 # [1.6.0](https://github.com/noloman/Android-AI-skills/compare/v1.5.0...v1.6.0) (2026-02-12)
 
 
