@@ -8,7 +8,7 @@ Opinionated, production-grade AI skills for Android, Kotlin Multiplatform (KMP),
 and Compose Multiplatform projects.
 
 Works with **Codex, Claude Code, GitHub Copilot, Cursor, Windsurf, Cline,
-JetBrains AI, Amazon Q & Aider**.
+JetBrains AI, Amazon Q, Aider & OpenCode**.
 
 ---
 
@@ -20,6 +20,7 @@ JetBrains AI, Amazon Q & Aider**.
 |------|------|--------|
 | Codex | `~/.codex/skills/<name>/SKILL.md` | Directory copy |
 | Claude Code | `~/.claude/skills/<name>/SKILL.md` | Directory copy (on-demand skill) |
+| OpenCode | `~/.config/opencode/skills/<name>/SKILL.md` | Directory copy (on-demand skill) |
 
 ### Project-level (`init` command)
 
@@ -34,6 +35,7 @@ JetBrains AI, Amazon Q & Aider**.
 | JetBrains AI | `.aiassistant/rules/<name>.md` | Markdown per skill |
 | Amazon Q | `.amazonq/rules/<name>.md` | Markdown per skill |
 | Aider | `CONVENTIONS.md` + `.aider.conf.yml` | Single markdown + YAML |
+| OpenCode | `.opencode/skills/<name>/SKILL.md` | Directory per skill (on-demand) |
 
 ---
 
@@ -560,7 +562,7 @@ flowchart TD
 
 ## Install via npx
 
-### Global install (default: Codex + Claude Code)
+### Global install (default: Codex + Claude Code + OpenCode)
 
 ```bash
 npx android-ai-skills@latest
@@ -579,6 +581,7 @@ npx android-ai-skills@latest --compose-mp-only
 ```bash
 npx android-ai-skills@latest --target codex
 npx android-ai-skills@latest --target claude
+npx android-ai-skills@latest --target opencode
 ```
 
 ### Dry run
@@ -596,7 +599,7 @@ npx android-ai-skills@latest uninstall --target codex
 
 ---
 
-## Project-level init (all 9 tools)
+## Project-level init (all 10 tools)
 
 Generate project-level instruction files for all supported AI tools:
 
@@ -609,6 +612,7 @@ npx android-ai-skills@latest init
 ```bash
 npx android-ai-skills@latest init --tools cursor,copilot
 npx android-ai-skills@latest init --tools claude,codex
+npx android-ai-skills@latest init --tools opencode
 ```
 
 ### Exclude tools
@@ -658,6 +662,29 @@ AGENTS.md                                            # Codex
 .claude/skills/android-maps-location/SKILL.md
 .claude/skills/android-ml-ondevice/SKILL.md
 .claude/skills/revenuecat-best-practices/SKILL.md
+.opencode/skills/compose-best-practices/SKILL.md      # OpenCode (per skill, on-demand)
+.opencode/skills/kmp-architecture-best-practices/SKILL.md
+.opencode/skills/compose-multiplatform-best-practices/SKILL.md
+.opencode/skills/kotlin-coroutines-best-practices/SKILL.md
+.opencode/skills/android-security-best-practices/SKILL.md
+.opencode/skills/android-performance-best-practices/SKILL.md
+.opencode/skills/play-store-readiness/SKILL.md
+.opencode/skills/android-testing-best-practices/SKILL.md
+.opencode/skills/android-accessibility-best-practices/SKILL.md
+.opencode/skills/android-build-infra/SKILL.md
+.opencode/skills/android-background-work/SKILL.md
+.opencode/skills/android-navigation-best-practices/SKILL.md
+.opencode/skills/play-billing-best-practices/SKILL.md
+.opencode/skills/firebase-best-practices/SKILL.md
+.opencode/skills/android-dependency-injection/SKILL.md
+.opencode/skills/android-networking/SKILL.md
+.opencode/skills/android-local-storage/SKILL.md
+.opencode/skills/android-auth-identity/SKILL.md
+.opencode/skills/android-media/SKILL.md
+.opencode/skills/android-ci-cd/SKILL.md
+.opencode/skills/android-maps-location/SKILL.md
+.opencode/skills/android-ml-ondevice/SKILL.md
+.opencode/skills/revenuecat-best-practices/SKILL.md
 .github/copilot-instructions.md                      # GitHub Copilot
 .cursor/rules/compose-best-practices.mdc             # Cursor (per skill)
 .cursor/rules/kmp-architecture-best-practices.mdc

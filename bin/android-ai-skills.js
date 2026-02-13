@@ -68,6 +68,7 @@ const INIT_TOOLS = {
   jetbrains: { dir: ".aiassistant/rules",                          type: "per-skill", ext: ".md" },
   amazonq:   { dir: ".amazonq/rules",                              type: "per-skill", ext: ".md" },
   aider:     { file: "CONVENTIONS.md",                             type: "single", extra: ".aider.conf.yml" },
+  opencode:  { dir: ".opencode/skills",                            type: "per-skill-dir" },
 };
 
 const INIT_TOOL_NAMES = Object.keys(INIT_TOOLS);
@@ -190,12 +191,12 @@ function help() {
 android-ai-skills — install AI governance skills for Android, KMP & Compose
 
 Supported tools: Codex, Claude Code, GitHub Copilot, Cursor, Windsurf,
-                 Cline, JetBrains AI, Amazon Q, Aider.
+                 Cline, JetBrains AI, Amazon Q, Aider, OpenCode.
 
 Usage:
-  npx android-ai-skills@latest [options]            Global install (Codex + Claude)
+  npx android-ai-skills@latest [options]            Global install (Codex + Claude + OpenCode)
   npx android-ai-skills@latest uninstall [options]   Remove global install
-  npx android-ai-skills@latest init [options]        Project-level files (all 9 tools)
+  npx android-ai-skills@latest init [options]        Project-level files (all 10 tools)
   npx android-ai-skills@latest print-paths [options]
 
 Skill selection:
@@ -204,9 +205,10 @@ Skill selection:
   --compose-mp-only       Install only compose-multiplatform-best-practices
 
 Global install targets:
-  --target <all|codex|claude>  Default: all
+  --target <all|codex|claude|opencode>  Default: all
   --codex-only            Same as --target codex
   --claude-only           Same as --target claude
+  --opencode-only         Same as --target opencode
 
 Init options:
   --path <dir>            Where to write files (default: current directory)
@@ -246,7 +248,7 @@ function parse(argv) {
     const n = argv[i + 1];
     const booleanKeys = new Set([
       "android-only", "kmp-only", "compose-mp-only",
-      "codex-only", "claude-only",
+      "codex-only", "claude-only", "opencode-only",
       "dry-run", "force", "help", "print-paths",
       "no-references",
     ]);
@@ -302,6 +304,7 @@ function resolveGlobalTargets(args) {
   let target = (args.target || "all").toLowerCase();
   if (args["codex-only"]) target = "codex";
   if (args["claude-only"]) target = "claude";
+  if (args["opencode-only"]) target = "opencode";
   if (target === "both") target = "all";
 
   if (args.dest) {
@@ -316,7 +319,10 @@ function resolveGlobalTargets(args) {
   if (target === "all" || target === "claude") {
     targets.push({ type: "claude", base: path.join(home, ".claude", "skills") });
   }
-  if (!targets.length) throw new Error(`Unknown --target ${args.target}. Use all|codex|claude.`);
+  if (target === "all" || target === "opencode") {
+    targets.push({ type: "opencode", base: path.join(home, ".config", "opencode", "skills") });
+  }
+  if (!targets.length) throw new Error(`Unknown --target ${args.target}. Use all|codex|claude|opencode.`);
   return targets;
 }
 
@@ -513,7 +519,7 @@ function main() {
           copyDir(src, dest, { dryRun, force });
         }
       }
-    } else if (target.type === "claude") {
+    } else if (target.type === "claude" || target.type === "opencode") {
       for (const skill of skills) {
         const src = path.join(projectRoot, skill);
         const dest = path.join(target.base, skill);
