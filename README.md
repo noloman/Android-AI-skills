@@ -562,6 +562,10 @@ flowchart TD
 
 ## Install via npx
 
+> **Team projects:** Use `init` (project-level) and commit the generated files so
+> every team member gets consistent AI governance on clone. Global install is best
+> for solo developers or as a personal baseline across all Android projects.
+
 ### Global install (default: Codex + Claude Code + OpenCode)
 
 ```bash
